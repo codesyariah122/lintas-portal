@@ -5,7 +5,7 @@ HOST_DB=mysql
 PORT_DB=3306
 USER_DB=root
 USER_PW=root
-DB=db_portal
+DB=db_lintas
 
 IP_API_URL=''
 GEO_API_URL=''
