@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c009766f9a65de3f132472940d4df511",
+    "content-hash": "cb87d9cef6b0be5c48d77da8be1dcf89",
     "packages": [
+        {
+            "name": "brick/geo",
+            "version": "0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/geo.git",
+                "reference": "ce4503f8d77473dbd7215de6aec51f14effe8b0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brick/geo/zipball/ce4503f8d77473dbd7215de6aec51f14effe8b0f",
+                "reference": "ce4503f8d77473dbd7215de6aec51f14effe8b0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "brick/reflection": "~0.2.0 || ~0.3.0 || ~0.4.0",
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "ext-sqlite3": "*",
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "4.28.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Brick\\Geo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "GIS geometry library",
+            "keywords": [
+                "brick",
+                "geo",
+                "geography",
+                "geometry",
+                "gis"
+            ],
+            "support": {
+                "issues": "https://github.com/brick/geo/issues",
+                "source": "https://github.com/brick/geo/tree/0.9.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/BenMorel",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-21T23:44:16+00:00"
+        },
         {
             "name": "psr/container",
             "version": "1.1.2",

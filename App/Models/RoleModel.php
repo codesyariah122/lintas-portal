@@ -26,11 +26,29 @@ class RoleModel extends ModelCore {
 	}
 
 	public static function all($name) {
-        return parent::all($name);
-    }
+		return parent::all($name);
+	}
 
-	public static function findById($id){}
-	
+	public static function findById($id) {
+		try {
+			$sql = "SELECT * FROM " . self::getTableName('roles') . " WHERE id = :id";
+			$stmt = self::initDb()->prepare($sql);
+			$stmt->bindParam(':id', $id);
+			$stmt->execute();
+
+			$result = $stmt->fetch(\PDO::FETCH_OBJ);
+
+			if ($result) {
+				return $result;
+			} else {
+				return null;
+			}
+		} catch (\PDOException $e) {
+			return $e->getMessage();
+		}
+	}
+
+
 	public static function create($data) {
 		try {
 			$sql = "INSERT INTO ".self::getTableName('roles')." (name) VALUES (:name)";
@@ -44,9 +62,9 @@ class RoleModel extends ModelCore {
 			return $e->getMessage();
 		}
 	}
-	
+
 	public static function update($id, $data){}
-	
+
 	public static function delete($id){}
 
 }

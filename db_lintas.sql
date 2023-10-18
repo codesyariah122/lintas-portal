@@ -28,14 +28,18 @@ CREATE TABLE roles (
 
 CREATE TABLE authors (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    uuid VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
     bio TEXT DEFAULT NULL,
     role_id INT NOT NULL,
-    location POINT DEFAULT NULL,
-    coordinates varchar(255) DEFAULT NULL,
+    coordinates VARCHAR(255) DEFAULT NULL,
     displayLocation TEXT DEFAULT NULL,
-    subscribers varchar(255) DEFAULT NULL,
+    address TEXT DEFAULT NULL,
+    articles_id VARCHAR(255) DEFAULT NULL,
+    subscribers VARCHAR(255) DEFAULT NULL,
+    created_at DATETIME,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
@@ -47,6 +51,8 @@ CREATE TABLE categories (
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
+    cover VARCHAR(255) NOT NULL,
+    cover_caption VARCHAR(255) NOT NULL,
     content LONGTEXT NOT NULL,
     published_at DATETIME,
     author_id INT DEFAULT NULL,
@@ -58,15 +64,16 @@ CREATE TABLE articles (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    uuid INT NOT NULL,
-    username VARCHAR(50) NOT NULL,
+    uuid VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(100),
+    name VARCHAR(50) UNIQUE NOT NULL,
     role_id INT NOT NULL,
-    location POINT DEFAULT NULL,
-    coordinates varchar(255) DEFAULT NULL,
+    coordinates VARCHAR(255) DEFAULT NULL,
     displayLocation TEXT DEFAULT NULL,
-    articles_id varchar(255) DEFAULT NULL,
+    address TEXT DEFAULT NULL,
+    articles_id VARCHAR(255) DEFAULT NULL,
+    created_at DATETIME,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 

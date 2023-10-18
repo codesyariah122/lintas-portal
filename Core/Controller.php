@@ -9,7 +9,7 @@ namespace Core;
 use App\Config\Environment;
 
 abstract class Controller {
-    
+
     public function __construct() {
         Environment::config();
     }
@@ -22,6 +22,39 @@ abstract class Controller {
 
     protected function jsonResponse($data) {
         echo json_encode($data);
+    }
+
+    protected static function validateInput($data, $rules) {
+        $errors = [];
+
+        foreach ($rules as $field => $rule) {
+            if (empty($data[$field])) {
+                $errors[$field] = "$field is required.";
+            } else {
+                if (isset($rule['email']) && $rule['email']) {
+                    if (!filter_var($data[$field], FILTER_VALIDATE_EMAIL)) {
+                        $errors[$field] = "$field is not a valid email.";
+                    }
+                }
+                if (isset($rule['minLength']) && strlen($data[$field]) < $rule['minLength']) {
+                    $errors[$field] = "$field should be at least {$rule['minLength']} characters long.";
+                }
+
+                if ($field === 'password' && isset($rule['passwordStrength'])) {
+                    if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/', $data[$field])) {
+                        $errors[$field] = "$field must contain at least one uppercase letter, one lowercase letter, and one digit.";
+                    }
+                }
+
+                if ($field === 'confirm_password') {
+                    if ($data['password'] !== $data['confirm_password']) {
+                        $errors['confirm_password'] = 'Passwords do not match.';
+                    }
+                }
+            }
+        }
+
+        return $errors;
     }
 }
 

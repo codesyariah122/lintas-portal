@@ -84,8 +84,8 @@ class GeoLocatorController extends Controller {
 	public function cityLists()
 	{
 		try {
-			$province_id = @$_GET['provinsi_id'];
 			$api_key = Headers::getApiKey();
+			$province_id = @$_GET['provinsi_id'];
 			$api_url = GEODATA_API_URL.'/kota?provinsi_id='.$province_id.'&api_key='.$api_key;
 			
 			$response = file_get_contents($api_url);
@@ -110,8 +110,8 @@ class GeoLocatorController extends Controller {
 	public function subDistrict()
 	{
 		try {
-			$city_id = @$_GET['city_id'];
 			$api_key = Headers::getApiKey();
+			$city_id = @$_GET['city_id'];
 			$api_url = GEODATA_API_URL.'/kecamatan?kota_id='.$city_id.'&api_key='.$api_key;
 			
 			$response = file_get_contents($api_url);
@@ -136,8 +136,8 @@ class GeoLocatorController extends Controller {
 	public function wardLists()
 	{
 		try {
-			$subdistrict_id = @$_GET['subdistrict_id'];
 			$api_key = Headers::getApiKey();
+			$subdistrict_id = @$_GET['subdistrict_id'];
 			$api_url = GEODATA_API_URL.'/kelurahan?kecamatan_id='.$subdistrict_id .'&api_key='.$api_key;
 			
 			$response = file_get_contents($api_url);
@@ -162,8 +162,8 @@ class GeoLocatorController extends Controller {
 	public function searchLocation()
 	{
 		try {
-			$keyword = @$_GET['search'];
 			$api_key = Headers::getApiKey();
+			$keyword = @$_GET['search'];
 			$api_url = GEODATA_SEARCH_API_URL.'?search='.$keyword .'&api_key='.$api_key;
 			
 			$response = file_get_contents($api_url);
@@ -172,7 +172,7 @@ class GeoLocatorController extends Controller {
 
 
 			if ($searchData) {
-				$dataResponse = ApiResources::responseNoStatusMessage($searchData);
+				$dataResponse = ApiResources::fromResponseToResult($searchData);
 			} else {
 				$dataResponse = ApiResources::createSuccessResponse('Error fetched data sub district!', null);
 			}

@@ -12,11 +12,12 @@ class ApiResources {
         ];
     }
 
-    public static function createErrorResponse($message)
+    public static function createErrorResponse($message, $data=[])
     {
         return [
             'success' => false,
-            'message' => $message
+            'message' => $message,
+            'data' => $data
         ];
     }
 
@@ -25,6 +26,11 @@ class ApiResources {
         return [
             'result' => $data
         ];
+    }
+
+    public static function fromResponseToResult($data) 
+    {
+        return $data;
     }
 
 }

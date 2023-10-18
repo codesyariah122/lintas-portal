@@ -5,10 +5,11 @@ use Core\Controller;
 use App\Resources\ApiResources;
 
 class HomeController extends Controller {
+	
 	public function index()
 	{
 		$dataResponse = [
-			'message' => 'Hallo Portal !!'
+			'message' => 'Hello !!'
 		];
 		$this->jsonResponse($dataResponse);
 	}
