@@ -7,11 +7,11 @@
 namespace Core;
 
 abstract class RouterCore{
-    abstract public function group($prefix, $callback): void;
-    abstract public function get($route, $handler): void;
-    abstract public function post($route, $handler): void;
-    abstract public function put($route, $handler): void;
-    abstract public function delete($route, $handler): void;
-    abstract public function run(): void;
+    abstract public static function group($prefix, $callback): void;
+    abstract public static function get($route, $handler): void;
+    abstract public static function post($route, $handler): void;
+    abstract public static function put($route, $handler): void;
+    abstract public static function delete($route, $handler): void;
+    abstract public static function run(): void;
 }
 

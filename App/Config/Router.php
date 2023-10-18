@@ -8,26 +8,27 @@
 
 namespace App\Config;
 
+use Core\RouterCore;
 use App\Controllers\NotFoundController;
 
-class Router {
+class Router extends RouterCore {
 
     private static $routes = [];
     private static $notfound;
     private static $groupPrefix = '';
 
-    public static function group($prefix, $callback) {
+    public static function group($prefix, $callback): void {
         self::$groupPrefix = $prefix;
         $callback();
         self::$groupPrefix = '';
     }
 
-    public static function get($route, $handler) {
+    public static function get($route, $handler): void {
         self::addRoute('GET', self::$groupPrefix . $route, $handler);
     }
 
 
-    private static function addRoute($method, $route, $handler) {
+    private static function addRoute($method, $route, $handler): void {
         $paramPattern = ($method === 'GET') ? '{param}' : '{dataParam}';
         $route = str_replace($paramPattern, '([^/]+)', $route);
         self::$routes[$route] = $handler;
