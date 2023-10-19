@@ -17,5 +17,7 @@ class Autoload {
 			if(file_exists($classFile))
 				require_once $classFile;
 		});
+
+		require_once __DIR__ .'/../../Core/Adapter.php';
 	}
 }

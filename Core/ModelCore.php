@@ -9,7 +9,7 @@ namespace Core;
 
 use App\Config\Database;
 
-abstract class ModelCore {
+abstract class ModelCore implements ModelInterface {
 	protected static $db;
 
     public function __construct() {

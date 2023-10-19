@@ -7,9 +7,8 @@
 namespace Core;
 
 use App\Config\Environment;
-use Core\Adapter;
 
-abstract class Controller implements Adapter {
+abstract class ControllerCore implements ControllerInterface {
 
     public function __construct() {
         Environment::config();

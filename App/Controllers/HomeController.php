@@ -1,10 +1,10 @@
 <?php
 namespace App\Controllers;
 
-use Core\Controller;
+use Core\ControllerCore;
 use App\Resources\ApiResources;
 
-class HomeController extends Controller {
+class HomeController extends ControllerCore {
 	
 	public function index()
 	{

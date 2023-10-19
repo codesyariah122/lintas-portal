@@ -1,4 +1,8 @@
 <?php
+/**
+* @author : Puji Ermanto <pujiermanto@gmail.com>
+* @return {Router}
+**/
 use App\Config\Autoload;
 use App\Middleware\JsonResponseMiddleware;
 use App\Config\Router;

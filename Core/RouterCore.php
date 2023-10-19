@@ -6,7 +6,7 @@
 
 namespace Core;
 
-abstract class RouterCore{
+abstract class RouterCore implements RouterInterface {
     abstract public static function group($prefix, $callback): void;
     abstract public static function get($route, $handler): void;
     abstract public static function post($route, $handler): void;

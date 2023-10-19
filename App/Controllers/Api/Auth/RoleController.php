@@ -1,11 +1,11 @@
 <?php
 namespace App\Controllers\Api\Auth;
 
-use Core\Controller;
+use Core\ControllerCore;
 use App\Models\RoleModel;
 use App\Resources\ApiResources;
 
-class RoleController extends Controller {
+class RoleController extends ControllerCore {
 	
 	public function index(){}
 

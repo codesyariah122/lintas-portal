@@ -4,14 +4,14 @@ namespace App\Controllers\Api\Auth;
 use Brick\Geo\LineString;
 use Brick\Geo\Point;
 use Brick\Geo\Polygon;
-use Core\Controller;
+use Core\ControllerCore;
 use Core\Headers;
 use Core\RequestApi;
 use App\Resources\ApiResources;
 use App\Models\{UserModel, AuthorModel, RoleModel};
 use App\Helpers\CustomeHelpers;
 
-class RegisterController extends Controller {
+class RegisterController extends ControllerCore {
 	public function index(){}
 
 	public function all(){}

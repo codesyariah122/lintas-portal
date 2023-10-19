@@ -1,12 +1,12 @@
 <?php
 namespace App\Controllers\Api\Public;
 
-use Core\Controller;
+use Core\ControllerCore;
 use Core\Headers;
 use Core\RequestApi;
 use App\Resources\ApiResources;
 
-class GeoLocatorController extends Controller {
+class GeoLocatorController extends ControllerCore {
 
 	public function index(){}
 
