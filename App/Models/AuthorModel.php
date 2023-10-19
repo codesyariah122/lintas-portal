@@ -15,7 +15,7 @@ class AuthorModel extends ModelCore {
 	// }
 
 	public static function isUserExists($email) {
-		$sql = "SELECT COUNT(*) FROM ".self::getTableName('users')." WHERE email = :email";
+		$sql = "SELECT COUNT(*) FROM ".self::getTableName('authors')." WHERE email = :email";
 		$stmt = self::initDb()->prepare($sql);
 		$stmt->bindParam(':email', $email);
 		$stmt->execute();

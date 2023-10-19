@@ -1,8 +1,9 @@
 <?php
-require_once 'App/Config/Autoload.php';
-
+use App\Config\Autoload;
 use App\Middleware\JsonResponseMiddleware;
 use App\Config\Router;
+
+Autoload::go();
 
 JsonResponseMiddleware::handle();
 
