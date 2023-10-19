@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\Api\Public;
 
+use System\ApiSystem;
 use Core\ControllerCore;
 use Core\Headers;
 use Core\RequestApi;
@@ -22,7 +23,7 @@ class GeoLocatorController extends ControllerCore {
 	{
 		try {
 			$api_url = IP_API_URL;
-			$ip = file_get_contents($api_url);
+			$ip = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 			$ipData = json_decode($ip);
 
 			if ($ipData && property_exists($ipData, 'ip')) {
@@ -43,7 +44,7 @@ class GeoLocatorController extends ControllerCore {
 		try {
 			$ip = @$_GET['ip'];
 			$api_url = GEO_API_URL.$ip.'/json';
-			$geo = file_get_contents($api_url);
+			$geo = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 			$geoData = json_decode($geo);
 
 			if ($geoData && property_exists($geoData, 'ip')) {
@@ -64,7 +65,7 @@ class GeoLocatorController extends ControllerCore {
 		try {
 			$api_key = Headers::getApiKey();
 			$api_url = GEODATA_API_URL.'/provinsi?api_key='.$api_key;			
-			$response = file_get_contents($api_url);
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 			$provinceData = json_decode($response);
 
 
@@ -88,8 +89,7 @@ class GeoLocatorController extends ControllerCore {
 			$province_id = @$_GET['provinsi_id'];
 			$api_url = GEODATA_API_URL.'/kota?provinsi_id='.$province_id.'&api_key='.$api_key;
 			
-			$response = file_get_contents($api_url);
-
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 
 			$cityData = json_decode($response);
 
@@ -114,8 +114,7 @@ class GeoLocatorController extends ControllerCore {
 			$city_id = @$_GET['city_id'];
 			$api_url = GEODATA_API_URL.'/kecamatan?kota_id='.$city_id.'&api_key='.$api_key;
 			
-			$response = file_get_contents($api_url);
-
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 
 			$districtData = json_decode($response);
 
@@ -140,8 +139,7 @@ class GeoLocatorController extends ControllerCore {
 			$subdistrict_id = @$_GET['subdistrict_id'];
 			$api_url = GEODATA_API_URL.'/kelurahan?kecamatan_id='.$subdistrict_id .'&api_key='.$api_key;
 			
-			$response = file_get_contents($api_url);
-
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 
 			$wardData = json_decode($response);
 
@@ -166,7 +164,7 @@ class GeoLocatorController extends ControllerCore {
 			$keyword = @$_GET['search'];
 			$api_url = GEODATA_SEARCH_API_URL.'?search='.$keyword .'&api_key='.$api_key;
 			
-			$response = file_get_contents($api_url);
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 
 			$searchData = json_decode($response);
 

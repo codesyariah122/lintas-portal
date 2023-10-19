@@ -33,3 +33,8 @@ interface RouterInterface
     public static function delete($route, $handler);
     public static function run();
 }
+
+interface RequestApiInterface
+{
+    public static function getRequestHttp($url, $key, $type);
+}

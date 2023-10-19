@@ -7,7 +7,7 @@
 namespace Core;
 
 use App\Config\Environment;
-use System\ValidationSystem;
+use System\ApiSystem;
 
 abstract class ControllerCore implements ControllerInterface {
 
@@ -27,7 +27,7 @@ abstract class ControllerCore implements ControllerInterface {
 
     protected static function validateInput($data, $rules) {
         // using system
-        return ValidationSystem::inputValidationSystem($data, $rules);
+        return ApiSystem::inputValidationSystem($data, $rules);
     }
 }
 

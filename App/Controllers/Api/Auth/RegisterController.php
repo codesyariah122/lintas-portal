@@ -47,7 +47,7 @@ class RegisterController extends ControllerCore {
 			$api_key = GEODATA_API_KEY;
 			$keyword = $data['address'];
 			$api_url = GEODATA_SEARCH_API_URL.'?search='.$keyword .'&api_key='.$api_key;
-			$response = file_get_contents($api_url);
+			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 			$responseData = json_decode($response);
 			$locations = [
 				'displayName' => $responseData->data->results[0]->displayName,
