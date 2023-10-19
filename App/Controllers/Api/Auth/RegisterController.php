@@ -21,11 +21,11 @@ class RegisterController extends ControllerCore {
 	{
 		$data = @$_POST;
 		$rules = [
-			'email' => ['email' => true],
-			'name' => ['minLength' => 3],
-			'password' => ['minLength' => 8, 'passwordStrength' => true],
-			'confirm_password' => [],
-			'author' => []
+			'email' => ['required' => true, 'email' => true],
+			'name' => ['required' => true, 'minLength' => 3],
+			'password' => ['required' => true, 'minLength' => 8, 'passwordStrength' => true],
+			'confirm_password' => ['required' => true],
+			'author' => ['required' => true, 'author' => true]
 		];
 
 		$errors = $this->validateInput($data, $rules);
@@ -58,10 +58,10 @@ class RegisterController extends ControllerCore {
 			$longitude = $responseData->data->results[0]->lng;
 			$latitude = $responseData->data->results[0]->lat;
 
-        	// Membuat objek Point dengan longitude dan latitude
+        		// Membuat objek Point dengan longitude dan latitude
 			$point = Point::xy($longitude, $latitude);
 
-        	// Mengubah objek Point ke format biner yang sesuai untuk kolom geometri
+        		// Mengubah objek Point ke format biner yang sesuai untuk kolom geometri
 			$location = $point->asBinary();
 
 			$generateUuid = CustomeHelpers::generateShortUuid();
@@ -73,9 +73,9 @@ class RegisterController extends ControllerCore {
 				'password' => password_hash($data['password'], PASSWORD_DEFAULT),
 				'name' => $data['name'],
 				'role_id' => $roleData->id,
-            // 'location' => $location,
+            		// 'location' => $location,
 				'coordinates' => $locations['coordinate'],
-			// 'coordinates' => "POINT({$point->x()} {$point->y()})",
+					// 'coordinates' => "POINT({$point->x()} {$point->y()})",
 				'displayLocation' => $locations['displayName'],
 				'articles_id' => NULL,
 				'created_at' => date('Y-m-d H:i:s')
