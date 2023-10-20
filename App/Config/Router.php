@@ -9,6 +9,7 @@
 namespace App\Config;
 
 use Core\RouterCore;
+use App\Middleware\JsonResponseMiddleware;
 use App\Controllers\NotFoundController;
 
 class Router extends RouterCore {
@@ -16,6 +17,13 @@ class Router extends RouterCore {
     private static $routes = [];
     private static $notfound;
     private static $groupPrefix = '';
+    private static $middlewareStack = [];
+
+    public static function withMiddleware($middleware, $callback) {
+        self::$middlewareStack[] = $middleware::setResponse('Content-Type', 'application/json');
+        $callback();
+        array_pop(self::$middlewareStack);
+    }
 
     public static function group($prefix, $callback): void {
         self::$groupPrefix = $prefix;

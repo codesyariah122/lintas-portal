@@ -9,6 +9,9 @@ namespace App\Config;
 class Autoload {
 	public static function go()
 	{
+		error_reporting(E_ALL);
+		ini_set('display_errors', 1);
+		date_default_timezone_set('Asia/Jakarta');
 		spl_autoload_register(function($className) {
 			$classPath = str_replace('\\', DIRECTORY_SEPARATOR, $className);
 

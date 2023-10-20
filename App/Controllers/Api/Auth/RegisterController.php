@@ -58,10 +58,10 @@ class RegisterController extends ControllerCore {
 			$longitude = $responseData->data->results[0]->lng;
 			$latitude = $responseData->data->results[0]->lat;
 
-        		// Membuat objek Point dengan longitude dan latitude
+        	// Membuat objek Point dengan longitude dan latitude
 			$point = Point::xy($longitude, $latitude);
 
-        		// Mengubah objek Point ke format biner yang sesuai untuk kolom geometri
+        	// Mengubah objek Point ke format biner yang sesuai untuk kolom geometri
 			$location = $point->asBinary();
 
 			$generateUuid = CustomeHelpers::generateShortUuid();

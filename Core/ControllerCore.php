@@ -7,12 +7,13 @@
 namespace Core;
 
 use App\Config\Environment;
-use System\ApiSystem;
+use System\{ApiSystem, ServiceSystem};
 
 abstract class ControllerCore implements ControllerInterface {
 
     public function __construct() {
         Environment::config();
+        ServiceSystem::generateAccess('API_KEY', API_KEY);
     }
 
     abstract public function index();
@@ -22,7 +23,7 @@ abstract class ControllerCore implements ControllerInterface {
     abstract public function delete();
 
     protected function jsonResponse($data) {
-        echo json_encode($data);
+        return ApiSystem::jsonResponseGenerate($data);
     }
 
     protected static function validateInput($data, $rules) {

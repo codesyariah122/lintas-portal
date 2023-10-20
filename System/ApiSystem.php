@@ -108,4 +108,9 @@ class ApiSystem {
     	$response = file_get_contents($url);
     	return $response;
     }
+
+    public static function jsonResponseGenerate($data)
+    {
+    	echo json_encode($data);
+    }
 }

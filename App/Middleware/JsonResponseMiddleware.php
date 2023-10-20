@@ -8,8 +8,18 @@ namespace App\Middleware;
 
 class JsonResponseMiddleware {
 
-    public static function handle()
+    public static function handle($request, $response, $next)
     {
-        header('Content-Type: application/json');
+
+        $response = $next($request, $response);
+
+        return $next($request, $response);
+    }
+
+    public static function setResponse($type, $value)
+    {
+        if(isset($type)):
+            header("{$type}: {$value}");
+        endif;
     }
 }
