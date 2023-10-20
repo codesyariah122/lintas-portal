@@ -21,7 +21,10 @@ class Router extends RouterCore {
 
     public static function withMiddleware($middleware, $callback) {
         self::$middlewareStack[] = $middleware::setResponse('Content-Type', 'application/json');
+        self::$middlewareStack[] = $middleware::setResponse('Accept', 'application/json');
+        
         $callback();
+
         array_pop(self::$middlewareStack);
     }
 

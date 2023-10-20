@@ -63,7 +63,7 @@ class GeoLocatorController extends ControllerCore {
 	public function provinceLists()
 	{
 		try {
-			$api_key = Headers::getApiKey();
+			$api_key = GEODATA_API_KEY;
 			$api_url = GEODATA_API_URL.'/provinsi?api_key='.$api_key;			
 			$response = RequestApi::getRequestHttp($api_url, '', 'fileContents');
 			$provinceData = json_decode($response);
@@ -85,7 +85,7 @@ class GeoLocatorController extends ControllerCore {
 	public function cityLists()
 	{
 		try {
-			$api_key = Headers::getApiKey();
+			$api_key = GEODATA_API_KEY;
 			$province_id = @$_GET['provinsi_id'];
 			$api_url = GEODATA_API_URL.'/kota?provinsi_id='.$province_id.'&api_key='.$api_key;
 			
@@ -110,7 +110,7 @@ class GeoLocatorController extends ControllerCore {
 	public function subDistrict()
 	{
 		try {
-			$api_key = Headers::getApiKey();
+			$api_key = GEODATA_API_KEY;
 			$city_id = @$_GET['city_id'];
 			$api_url = GEODATA_API_URL.'/kecamatan?kota_id='.$city_id.'&api_key='.$api_key;
 			
@@ -135,7 +135,7 @@ class GeoLocatorController extends ControllerCore {
 	public function wardLists()
 	{
 		try {
-			$api_key = Headers::getApiKey();
+			$api_key = GEODATA_API_KEY;
 			$subdistrict_id = @$_GET['subdistrict_id'];
 			$api_url = GEODATA_API_URL.'/kelurahan?kecamatan_id='.$subdistrict_id .'&api_key='.$api_key;
 			
@@ -160,7 +160,7 @@ class GeoLocatorController extends ControllerCore {
 	public function searchLocation()
 	{
 		try {
-			$api_key = Headers::getApiKey();
+			$api_key = GEODATA_API_KEY;
 			$keyword = @$_GET['search'];
 			$api_url = GEODATA_SEARCH_API_URL.'?search='.$keyword .'&api_key='.$api_key;
 			
