@@ -2,7 +2,6 @@
 namespace App\Controllers;
 
 use Core\ControllerCore;
-use App\Resources\ApiResources;
 
 class HomeController extends ControllerCore {
 	
