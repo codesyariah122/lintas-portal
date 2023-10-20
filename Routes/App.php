@@ -1,7 +1,7 @@
 <?php
 /**
 * @author : Puji Ermanto <pujiermanto@gmail.com>
-* @return {Router}
+* @return {Router::class}
 **/
 use App\Middleware\JsonResponseMiddleware;
 use App\Config\Router;
@@ -19,7 +19,7 @@ Router::withMiddleware(JsonResponseMiddleware::class, function () {
         Router::get('/ward-lists', 'Api\Public\GeoLocatorController@wardLists');
         Router::get('/search-location', 'Api\Public\GeoLocatorController@searchLocation');
 
-    // Roles user lists
+        // Roles user lists
         Router::get('/roles', 'Api\Auth\RoleController@all');
     });
 

@@ -17,6 +17,19 @@ class ServiceSystem {
             ];
             ApiSystem::jsonResponseGenerate($dataResponse);
             exit;
+        } else {            
+            $headers = getallheaders();
+            if (isset($headers['X-Api-Key']) && $value === $headers['X-Api-Key']) {
+                $xApiKey = $headers['X-Api-Key'];
+                return;
+            } else {
+                header("HTTP/1.1 401 Unauthorized");
+                $dataResponse = [
+                    'message' => "Akses ditolak. API_KEY diperlukan untuk mengakses sumber daya ini."
+                ];
+                ApiSystem::jsonResponseGenerate($dataResponse);
+                exit;
+            }
         }
     }
 }

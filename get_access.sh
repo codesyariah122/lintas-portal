@@ -1,7 +1,8 @@
 #!/bin/bash
+# @author Puji Ermanto <pujiermanto@gmail.com>
 
 env_file=".env"
-api_key="API_KEY=$(openssl rand -hex 16)"
+api_key="API_KEY=$(openssl rand -hex 16 | tr -d '\n' | tr -dc '[:alnum:]!@#$%^&*()_+')"
 
 read -p "Are your sure to create a new API_KEY in $env_file? (y/n): " confirmation
 
