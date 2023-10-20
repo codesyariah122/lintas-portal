@@ -6,7 +6,7 @@
 
 namespace Core;
 
-class View {
+class View implements ViewInterface {
     public function render($viewName, $data = []) {
         extract($data);
         require_once 'views/' . $viewName . '.php';

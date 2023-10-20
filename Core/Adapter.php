@@ -38,3 +38,8 @@ interface RequestApiInterface
 {
     public static function getRequestHttp($url, $key, $type);
 }
+
+interface ViewInterface
+{
+    public static function render($viewName, $data);
+}
