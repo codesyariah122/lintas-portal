@@ -1,4 +1,5 @@
 APP_NAME=PORTAL
+API_KEY=
 BASE_URL=http://lintas.xz
 DB_CONNECTION=mysql
 HOST_DB=mysql
