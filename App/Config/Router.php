@@ -16,16 +16,26 @@ class Router extends RouterCore {
 
     private static $routes = [];
     private static $groupPrefix = '';
-    private static $middlewareStack = [];
 
+    public static function authMiddleware($middleware, $callback)
+    {
+       $middleware::setResponse('Content-Type', 'application/json');
+        try {
+            $middleware::handle();
+            $callback();
+        } catch (\Exception $e) {
+            http_response_code($e->getCode());
+            echo json_encode(['error' => $e->getMessage()]);
+            exit;
+        }
+    }
 
-    public static function withMiddleware($middleware, $callback) {
-        self::$middlewareStack[] = $middleware::setResponse('Content-Type', 'application/json');
-        self::$middlewareStack[] = $middleware::setResponse('Accept', 'application/json');
-        
+    public static function jsonMiddleware($middleware, $callback) 
+    {
+        $middleware::handle('Content-Type', 'application/json');
+        $middleware::handle('Accept', 'application/json');
+
         $callback();
-
-        array_pop(self::$middlewareStack);
     }
 
     public static function group($prefix, $callback): void {
@@ -68,6 +78,7 @@ class Router extends RouterCore {
     public static function run(): void {
         $uri = $_SERVER['REQUEST_URI'];
         $uri = strtok($uri, '?');
+        $routeFound = false;
 
         foreach (self::$routes as $route => $handler) {
             $pattern = '#^' . $route . '$#';
@@ -83,15 +94,16 @@ class Router extends RouterCore {
                 $dataParam = end($matches);
 
                 call_user_func([$controller, $methodName], $dataParam);
-
+                $routeFound = true;
                 return;
             }
         }
 
-        http_response_code(404);
-        header("HTTP/1.0 404 Not Found");
-
-        new NotFoundController();
+        if (!$routeFound) {
+            http_response_code(404);
+            header("HTTP/1.0 404 Not Found");
+            new NotFoundController();
+        }
     }
 }
 
