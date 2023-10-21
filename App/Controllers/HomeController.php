@@ -8,6 +8,7 @@ class HomeController extends ControllerCore {
 	public function index()
 	{
 		$dataResponse = [
+			"title" => "Home Page::Lintas Portal",
 			'message' => 'Lintas Portal Website !!'
 		];
 		// $this->jsonResponse($dataResponse);

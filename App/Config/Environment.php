@@ -9,7 +9,7 @@ namespace App\Config;
 
 class Environment {
 
-	public static function config()
+	public static function env()
     {
         $dotenv = parse_ini_file('.env');
 

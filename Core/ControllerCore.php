@@ -12,7 +12,7 @@ use System\{ApiSystem, ServiceSystem, ViewSystem};
 abstract class ControllerCore implements ControllerInterface, ViewInterface {
 
     public function __construct() {
-        Environment::config();
+        Environment::env();
         ServiceSystem::generateAccess('API_KEY', API_KEY);
     }
 

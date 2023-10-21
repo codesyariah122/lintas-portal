@@ -15,9 +15,9 @@ use App\Controllers\NotFoundController;
 class Router extends RouterCore {
 
     private static $routes = [];
-    private static $notfound;
     private static $groupPrefix = '';
     private static $middlewareStack = [];
+
 
     public static function withMiddleware($middleware, $callback) {
         self::$middlewareStack[] = $middleware::setResponse('Content-Type', 'application/json');
@@ -91,7 +91,7 @@ class Router extends RouterCore {
         http_response_code(404);
         header("HTTP/1.0 404 Not Found");
 
-        $this->notfound->errors();
+        new NotFoundController();
     }
 }
 

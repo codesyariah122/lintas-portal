@@ -2,11 +2,26 @@
 
 namespace App\Controllers;
 
-class NotFoundController {
+use Core\ControllerCore;
+
+class NotFoundController extends ControllerCore {
 	
-    public function errors(){
-        
-        header("HTTP/1.0 404 Not Found");
-        echo "Page Not Found";
+    public function __construct()
+    {
+        $dataResponse = [
+            "title" => "Err Page",
+            "message" => "Page Not Found !!"
+        ];
+        $this->render('errors', $dataResponse);
     }
+
+    public function index(){}
+
+    public function all(){}
+
+    public function create(){}
+
+    public function update(){}
+
+    public function delete(){}
 }
