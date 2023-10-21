@@ -97,3 +97,14 @@ CREATE TABLE comments (
     FOREIGN KEY (article_id) REFERENCES articles(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE logins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    author_id INT NOT NULL,
+    access_token LONGTEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NULL,
+    update_at TIMESTAMP DEFAULT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (author_id) REFERENCES authors(id)
+);

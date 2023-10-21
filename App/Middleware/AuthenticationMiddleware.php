@@ -4,10 +4,11 @@ namespace App\Middleware;
 
 class AuthenticationMiddleware {
 
-    public static function handle() {
-
+    public static function handle() 
+    {
         $headers = getallheaders();
         $authorizationHeader = $headers['Authorization'] ?? '';
+
         if (empty($authorizationHeader) || !str_starts_with($authorizationHeader, 'Bearer ')) {
             throw new \Exception('Autentikasi gagal', 401);
         }

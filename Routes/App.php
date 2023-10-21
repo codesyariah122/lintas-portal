@@ -9,10 +9,16 @@ use App\Config\Router;
 
 
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
-$trimmedUri = rtrim($uri, '/add-role');
+$trimmedUri = rtrim($uri, '/');
 
-if($trimmedUri !== "/api/auth") {    
-
+if(strpos($trimmedUri, '/api/auth') === 0) {    
+    Router::authMiddleware(AuthenticationMiddleware::class, function() {
+        Router::group('/api/auth', function() {
+            Router::post('/add-role', 'Api\Auth\RoleController@create');
+            Router::get('/add-owner', 'Api\Auth\UserOwnerController@index');
+        });
+    });
+} else {
     Router::get('/', 'HomeController@index');
 
     Router::jsonMiddleware(JsonResponseMiddleware::class, function () {
@@ -31,13 +37,6 @@ if($trimmedUri !== "/api/auth") {
 
         Router::group('/api/user', function(){
             Router::post('/new-register', 'Api\Auth\RegisterController@create');
-        });
-
-    });
-} else {
-    Router::authMiddleware(AuthenticationMiddleware::class, function() {
-        Router::group('/api/auth', function() {
-            Router:;post('/add-role', 'Api\Auth\RoleController@create');
         });
     });
 }
