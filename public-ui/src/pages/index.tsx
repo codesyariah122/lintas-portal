@@ -1,14 +1,20 @@
+import * as React from "react";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { RootLayout } from "@/layouts/RootLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <h1>Hello Next!</h1>
-    </main>
+    <RootLayout>
+      <h1>Hallo World</h1>
+    </RootLayout>
   );
-}
+};
+
+export default Home;
