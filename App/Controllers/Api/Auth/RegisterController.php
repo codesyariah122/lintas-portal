@@ -36,8 +36,9 @@ class RegisterController extends ControllerCore {
 			return;
 		}
 
-		$author = $data['author'];
+		$author = filter_var($data['author'], FILTER_VALIDATE_BOOLEAN);
 		$email = $data['email'];
+
 		$existsDataModel = $author ? AuthorModel::isUserExists($email) : UserModel::isUserExists($email);
 
 		if ($existsDataModel) {
@@ -65,17 +66,17 @@ class RegisterController extends ControllerCore {
 			$location = $point->asBinary();
 
 			$generateUuid = CustomeHelpers::generateShortUuid();
-			$roleData = RoleModel::findById($data['author'] ? 1 : 2);
-			$author = filter_var($data['author'], FILTER_VALIDATE_BOOLEAN);
+			$roleData = RoleModel::findById($author ? 1 : 2);
+
 			$newUserData = [
 				'uuid' => $generateUuid,
 				'email' => $data['email'],
 				'password' => password_hash($data['password'], PASSWORD_DEFAULT),
 				'name' => $data['name'],
 				'role_id' => $roleData->id,
-            		// 'location' => $location,
+            	// 'location' => $location,
 				'coordinates' => $locations['coordinate'],
-					// 'coordinates' => "POINT({$point->x()} {$point->y()})",
+				// 'coordinates' => "POINT({$point->x()} {$point->y()})",
 				'displayLocation' => $locations['displayName'],
 				'articles_id' => NULL,
 				'created_at' => date('Y-m-d H:i:s')
@@ -85,7 +86,7 @@ class RegisterController extends ControllerCore {
 				$newUserData['bio'] = $data['bio'];
 			}
 
-			$userData = $author ? AuthorModel::create($newUserData) : UserModel::create($newUserData);
+			$userData = $author  ? AuthorModel::create($newUserData) : UserModel::create($newUserData);
 
 			$response = ApiResources::fromResponseToResult($userData);
 
