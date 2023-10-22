@@ -41,7 +41,7 @@ if(strpos($trimmedUri, '/api/access') === 0) {
             Router::get('/search-location', 'Api\Public\GeoLocatorController@searchLocation');
 
             // Roles user lists
-            Router::get('/roles', 'Api\Auth\RoleController@all');
+            Router::get('/roles', 'Api\Users\RoleController@all');
         });
 
         Router::group('/api/user', function(){

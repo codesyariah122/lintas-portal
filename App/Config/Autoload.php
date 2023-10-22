@@ -6,7 +6,10 @@
 **/
 namespace App\Config;
 
+use App\Config\Environment;
+
 class Autoload {
+
 	public static function go()
 	{
 		error_reporting(E_ALL);
@@ -20,6 +23,8 @@ class Autoload {
 			if(file_exists($classFile))
 				require_once $classFile;
 		});
+		
+		Environment::env();
 
 		require_once __DIR__ .'/../../Core/Adapter.php';
 	}

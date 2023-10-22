@@ -57,6 +57,7 @@ class UserModel extends ModelCore {
 		$db->beginTransaction();
 
 		try {
+
 			$sql = "INSERT INTO " . self::getTableName('users') . " (uuid, email, password, name, role_id, coordinates, displayLocation, articles_id, created_at)
 			VALUES (:uuid, :email, :password, :name, :role_id, :coordinates, :displayLocation, :articles_id, :created_at)";
 
@@ -75,7 +76,12 @@ class UserModel extends ModelCore {
 			$stmt->bindParam(':created_at', $data['created_at']);
 
 			if ($stmt->execute()) {
-				$sql = "SELECT * FROM " . self::getTableName('users') . " ORDER BY created_at DESC LIMIT 1";
+				$sql = "SELECT users.*, roles.name AS role_name
+				FROM users
+				INNER JOIN roles ON users.role_id = roles.id
+				ORDER BY users.created_at DESC
+				LIMIT 1;";
+
 				$result = $db->query($sql);
 
 				$lastInsertedData = $result->fetchAll(\PDO::FETCH_ASSOC);

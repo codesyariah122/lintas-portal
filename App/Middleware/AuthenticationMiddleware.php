@@ -3,8 +3,10 @@
 namespace App\Middleware;
 
 use System\ServiceSystem;
+use App\Models\LoginModel;
 
 class AuthenticationMiddleware {
+
 
     public static function handle() 
     {   
@@ -28,9 +30,8 @@ class AuthenticationMiddleware {
     }
 
     private static function validateAccessToken($accessToken) {
-        if(isset($accessToken)) {
-            return true;
-        }
+        $userLoginData = LoginModel::findToken($accessToken);
+        return $userLoginData;
     }
 
     public static function setResponse($type, $value)

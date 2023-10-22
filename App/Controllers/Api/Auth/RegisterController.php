@@ -8,7 +8,7 @@ use Core\ControllerCore;
 use Core\Headers;
 use Core\RequestApi;
 use App\Resources\ApiResources;
-use App\Models\{UserModel, AuthorModel, RoleModel};
+use App\Models\{UserModel, RoleModel};
 use App\Helpers\CustomeHelpers;
 
 class RegisterController extends ControllerCore {
@@ -37,9 +37,11 @@ class RegisterController extends ControllerCore {
 		}
 
 		$author = filter_var($data['author'], FILTER_VALIDATE_BOOLEAN);
+
+
 		$email = $data['email'];
 
-		$existsDataModel = $author ? AuthorModel::isUserExists($email) : UserModel::isUserExists($email);
+		$existsDataModel = UserModel::isUserExists($email);
 
 		if ($existsDataModel) {
 			$response = ApiResources::createErrorResponse('Email already exists.');
@@ -66,7 +68,7 @@ class RegisterController extends ControllerCore {
 			$location = $point->asBinary();
 
 			$generateUuid = CustomeHelpers::generateShortUuid();
-			$roleData = RoleModel::findById($author ? 1 : 2);
+			$roleData = RoleModel::findById($author ? 3 : 2);
 
 			$newUserData = [
 				'uuid' => $generateUuid,
@@ -86,7 +88,7 @@ class RegisterController extends ControllerCore {
 				$newUserData['bio'] = $data['bio'];
 			}
 
-			$userData = $author  ? AuthorModel::create($newUserData) : UserModel::create($newUserData);
+			$userData = UserModel::create($newUserData);
 
 			$response = ApiResources::fromResponseToResult($userData);
 

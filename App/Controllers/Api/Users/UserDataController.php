@@ -15,12 +15,9 @@ class UserDataController extends ControllerCore {
 
 	public function index(){
 		$accessToken = $_SESSION['accessToken'];
-		$userLogoutData = LoginModel::findToken($accessToken);
-		if(!$userLogoutData) {
-			$response = ApiResources::createErrorResponse('Data Failed!!', ['message' => 'Failed user data / Token Not Found!!!']);
-			$this->jsonResponse($response);
-		} else {
-			$response = ApiResources::fromResponseToResult($userLogoutData);
+		$userLoginData = LoginModel::findToken($accessToken);
+		if($userLoginData) {
+			$response = ApiResources::fromResponseToResult($userLoginData);
 			$this->jsonResponse($response);
 		}
 	}

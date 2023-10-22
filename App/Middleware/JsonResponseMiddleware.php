@@ -10,7 +10,8 @@ class JsonResponseMiddleware {
 
     public static function handle($type, $value)
     {
-        if (isset($type)) {
+        $headers = getallheaders();
+        if (isset($headers['X-Api-Key'])) {
             header("{$type}: {$value}");
         }
     }
