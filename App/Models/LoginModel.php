@@ -45,10 +45,10 @@ class LoginModel extends ModelCore {
 			if ($result !== false) {
 				return $result;
 			} else {
-				echo "Data tidak ditemukan.";
+				return false;
 			}
 
-			return ['success' => true, 'message' => "successfully login!", 'data' => $result];
+			return ['success' => true, 'message' => "User data login!", 'data' => $result];
 		} catch (PDOException $e) {
 			return ['success' => false, 'message' => $e->getMessage()];
 		}
@@ -100,6 +100,37 @@ class LoginModel extends ModelCore {
 
 	public static function update($id, $data){}
 
-	public static function delete($id){}
+	public static function delete($accessToken) {
+		$db = self::initDb();
+		$db->beginTransaction();
+
+		try {
+			$selectSql = "SELECT l.access_token, u.* FROM " . self::getTableName('logins') . " AS l
+			LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
+			WHERE l.access_token = :access_token
+			ORDER BY l.created_at DESC LIMIT 1";
+
+			$selectStmt = $db->prepare($selectSql);
+			$selectStmt->bindParam(':access_token', $accessToken);
+			$selectStmt->execute();
+
+			$deletedData = $selectStmt->fetch(\PDO::FETCH_ASSOC);
+
+			$deleteSql = "DELETE FROM " . self::getTableName('logins') . " WHERE access_token = :access_token";
+			$deleteStmt = $db->prepare($deleteSql);
+			$deleteStmt->bindParam(':access_token', $accessToken);
+
+			if ($deleteStmt->execute()) {
+				$db->commit();
+				return ['success' => true, 'message' => "successfully logout!", 'data' => $deletedData];
+			} else {
+				$db->rollBack();
+				return ['success' => false, 'message' => "SQL Error: " . $deleteStmt->errorInfo()[2]];
+			}
+		} catch (\PDOException $e) {
+			$db->rollBack();
+			return ['success' => false, 'message' => $e->getMessage()];
+		}
+	}
 
 }

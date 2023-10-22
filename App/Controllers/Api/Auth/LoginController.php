@@ -17,9 +17,15 @@ class LoginController extends ControllerCore {
 	public function logout()
 	{
 		$accessToken = $_SESSION['accessToken'];
-		$userLoginData = LoginModel::findToken($accessToken);
-		$response = ApiResources::fromResponseToResult($userLoginData);
-		$this->jsonResponse($response);
+		$userLogoutData = LoginModel::findToken($accessToken);
+		if(!$userLogoutData) {
+			$response = ApiResources::createErrorResponse('Data Failed!!', ['message' => 'User data login failed fetch']);
+			$this->jsonResponse($response);
+		} else {			
+			$userLogout = LoginModel::delete($userLogoutData['access_token']);
+			$response = ApiResources::fromResponseToResult($userLogout);
+			$this->jsonResponse($response);
+		}
 	}
 
 
@@ -49,10 +55,8 @@ class LoginController extends ControllerCore {
 			$hashedPassword = UserModel::getHashedPassword($email);
 
 			if (password_verify($password, $hashedPassword)) {
-            	// Kata sandi benar, lanjutkan untuk membuat token akses JWT
 				$user = UserModel::getUserByEmail($email);
 
-            	// Cek apakah pengguna sudah memiliki token akses aktif
 				$userIsLoggedIn = LoginModel::isUserLoggedIn($user['id']);
 
 				if (!$userIsLoggedIn) {
@@ -74,19 +78,16 @@ class LoginController extends ControllerCore {
 					$response = ApiResources::fromResponseToResult($insertResult);
 					$this->jsonResponse($response);
 				} else {
-                // Jika iya, Anda dapat mengirim respons sesuai dengan kebijakan Anda.
 					$response = ApiResources::createErrorResponse('Login failed', ['message' => 'User is already logged in']);
 					$this->jsonResponse($response);
 					return;
 				}
 			} else {
-            // Kata sandi salah, kirim respons kesalahan
 				$response = ApiResources::createErrorResponse('Login failed', ['message' => 'Invalid password']);
 				$this->jsonResponse($response);
 				return;
 			}
 		} else {
-        // Email tidak ditemukan, kirim respons kesalahan
 			$response = ApiResources::createErrorResponse('Login failed', ['message' => 'Email not found']);
 			$this->jsonResponse($response);
 			return;
@@ -97,5 +98,7 @@ class LoginController extends ControllerCore {
 
 	public function update(){}
 
-	public function delete(){}
+	public function delete(){
+
+	}
 }
