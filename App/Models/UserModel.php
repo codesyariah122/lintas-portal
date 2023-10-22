@@ -25,6 +25,27 @@ class UserModel extends ModelCore {
 		return $count > 0;
 	}
 
+	public static function getUserByEmail($email) {
+		$sql = "SELECT * FROM " . self::getTableName('users') . " WHERE email = :email";
+		$stmt = self::initDb()->prepare($sql);
+		$stmt->bindParam(':email', $email);
+		$stmt->execute();
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	public static function getHashedPassword($email) {
+		$sql = "SELECT password FROM " . self::getTableName('users') . " WHERE email = :email";
+		$stmt = self::initDb()->prepare($sql);
+		$stmt->bindParam(':email', $email);
+		$stmt->execute();
+
+		$result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+		return ($result !== false) ? $result['password'] : null;
+	}
+
+
 	public static function all($name) {
 		return parent::all($name);
 	}

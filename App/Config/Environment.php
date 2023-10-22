@@ -13,8 +13,20 @@ class Environment {
     {
         $dotenv = parse_ini_file('.env');
 
+        if (array_key_exists('BASE_URL', $dotenv) && !defined('BASE_URL')) {
+            define('BASE_URL', $dotenv['BASE_URL']);
+        }
+
+        if (array_key_exists('PRIVATE_KEY_PATH', $dotenv) && !defined('PRIVATE_KEY_PATH')) {
+            define('PRIVATE_KEY_PATH', $dotenv['PRIVATE_KEY_PATH']);
+        }
+
         if (array_key_exists('API_KEY', $dotenv) && !defined('API_KEY')) {
             define('API_KEY', $dotenv['API_KEY']);
+        }
+
+        if (array_key_exists('SECRET_KEY', $dotenv) && !defined('SECRET_KEY')) {
+            define('SECRET_KEY', $dotenv['SECRET_KEY']);
         }
 
         if (array_key_exists('HOST_DB', $dotenv) && !defined('HOST')) {

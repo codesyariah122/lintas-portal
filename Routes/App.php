@@ -1,7 +1,7 @@
 <?php
 /**
 * @author : Puji Ermanto <pujiermanto@gmail.com>
-* @return {Router::class}
+* @return : {Router::Class} {Controller@Method}
 **/
 use App\Middleware\JsonResponseMiddleware;
 use App\Middleware\AuthenticationMiddleware;
@@ -11,11 +11,17 @@ use App\Config\Router;
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
 $trimmedUri = rtrim($uri, '/');
 
-if(strpos($trimmedUri, '/api/auth') === 0) {    
+if(strpos($trimmedUri, '/api/access') === 0) {    
     Router::authMiddleware(AuthenticationMiddleware::class, function() {
+        Router::group('/api/access', function() {
+            Router::post('/add-role', 'Api\Users\RoleController@create');
+            Router::get('/add-owner', 'Api\Users\UserOwnerController@index');
+        });
+    });
+} else if (strpos($trimmedUri, '/api/auth') === 0) {
+    Router::jsonMiddleware(JsonResponseMiddleware::class, function() {
         Router::group('/api/auth', function() {
-            Router::post('/add-role', 'Api\Auth\RoleController@create');
-            Router::get('/add-owner', 'Api\Auth\UserOwnerController@index');
+            Router::post('/login', 'Api\Auth\LoginController@create');
         });
     });
 } else {
