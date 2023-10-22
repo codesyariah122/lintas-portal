@@ -15,7 +15,9 @@ class UserDataController extends ControllerCore {
 
 	public function index(){
 		$accessToken = $_SESSION['accessToken'];
+		$expTime = $_SESSION['expTime'];		
 		$userLoginData = LoginModel::findToken($accessToken);
+		$userLoginData['exp_time'] = $expTime;
 		if($userLoginData) {
 			$response = ApiResources::fromResponseToResult($userLoginData);
 			$this->jsonResponse($response);

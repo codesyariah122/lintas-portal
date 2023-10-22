@@ -12,6 +12,7 @@ class Environment {
     private static $environmentVariables = [
         'BASE_URL',
         'PRIVATE_KEY_PATH',
+        'PUBLIC_KEY_PATH',
         'API_KEY',
         'SECRET_KEY',
         'HOST_DB',

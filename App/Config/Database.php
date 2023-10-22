@@ -25,7 +25,7 @@ class Database {
 				self::$conn = new \PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 				self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			} catch (\PDOException $e) {
-				echo "Koneksi ke database gagal: " . $e->getMessage();
+				throw new \PDOException('Autentikasi gagal'.$e->getMessage(), 401);
 			}
 		}
 

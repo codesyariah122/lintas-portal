@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use System\ServiceSystem;
 use Core\ModelCore;
 use App\Resources\ApiResources;
 use Core\ServiceContainer;
@@ -88,7 +89,13 @@ class LoginModel extends ModelCore {
 				$result->execute();
 
 				$lastInsertedData = $result->fetch(\PDO::FETCH_ASSOC);
+				$lastInsertedData['exp_time'] = $data['exp_time'];
 				$db->commit();
+				$dataSession = [
+					'key' => 'expTime',
+					'value' => $data['exp_time']
+				];
+				ServiceSystem::generateSession($dataSession);
 				return ['success' => true, 'message' => "successfully login!", 'data' => $lastInsertedData];
 			} else {
 				$db->rollBack();
