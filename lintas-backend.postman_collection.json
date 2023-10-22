@@ -1,0 +1,605 @@
+{
+	"info": {
+		"_postman_id": "c7f2d6cd-1845-496a-9f7b-2c08534cf7c1",
+		"name": "lintas-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24762215"
+	},
+	"item": [
+		{
+			"name": "/api/public",
+			"item": [
+				{
+					"name": "Geolocation",
+					"item": [
+						{
+							"name": "geolocator",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/public/geo-locator",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"public",
+										"geo-locator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getIpPublic",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/public/get-ip",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"public",
+										"get-ip"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GeoCode",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://geocode.maps.co/search?format=json&q=Cimahi Selatan",
+									"protocol": "https",
+									"host": [
+										"geocode",
+										"maps",
+										"co"
+									],
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "format",
+											"value": "json"
+										},
+										{
+											"key": "q",
+											"value": "Cimahi Selatan"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "provinceLists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/public/province-lists",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"public",
+										"province-lists"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cityLists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/public/city-lists?provinsi_id=32",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"public",
+										"city-lists"
+									],
+									"query": [
+										{
+											"key": "provinsi_id",
+											"value": "32"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "subDistrictLists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://lintas.xz/api/public/subdistrict?city_id=32.77",
+									"protocol": "http",
+									"host": [
+										"lintas",
+										"xz"
+									],
+									"path": [
+										"api",
+										"public",
+										"subdistrict"
+									],
+									"query": [
+										{
+											"key": "city_id",
+											"value": "32.77"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "wardLists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-API-KEY",
+										"value": "Szi8k3dgPZmPDhJzdhNex0uTIke3aZ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://lintas.xz/api/public/ward-lists?subdistrict_id=32.77.01",
+									"protocol": "http",
+									"host": [
+										"lintas",
+										"xz"
+									],
+									"path": [
+										"api",
+										"public",
+										"ward-lists"
+									],
+									"query": [
+										{
+											"key": "subdistrict_id",
+											"value": "32.77.01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "searchLocation",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/public/search-location?search=jakarta selatan",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"public",
+										"search-location"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "jakarta selatan"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UserManagement",
+					"item": [
+						{
+							"name": "rolesList",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://lintas.xz/api/public/roles",
+									"protocol": "http",
+									"host": [
+										"lintas",
+										"xz"
+									],
+									"path": [
+										"api",
+										"public",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/api/auth",
+			"item": [
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ddg_dadang@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Puji@190387",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/auth/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/access",
+			"item": [
+				{
+					"name": "createNewRole",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer $2y$10$5bP2jWNs40tUu0YlF4jgd.2zwlcP3UGsPvHUuBgaQ3zbEQJBaj3gK",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "owner",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/access/add-role",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"access",
+								"add-role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newOwner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer $2y$10$5bP2jWNs40tUu0YlF4jgd.2zwlcP3UGsPvHUuBgaQ3zbEQJBaj3gK",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ddg_dadang@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "dadang kodir",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Puji@190387",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "Puji@190387",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "ujung berung bandung",
+									"type": "text"
+								},
+								{
+									"key": "role_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/access/add-owner",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"access",
+								"add-owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoutUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/access/logout",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"access",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userDataLogin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/access/user-data",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"access",
+								"user-data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/user",
+			"item": [
+				{
+					"name": "newRegister",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{api_access}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ddg_dadang@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Dadang Kondor",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Puji@190387",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "Puji@190387",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "banjaran bandung",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "Saya author baru loh",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/api/user/new-register",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"new-register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

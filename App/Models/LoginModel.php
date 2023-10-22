@@ -30,8 +30,10 @@ class LoginModel extends ModelCore {
 		$db = self::initDb();
 
 		try {
-			$sql = "SELECT l.access_token, u.* FROM " . self::getTableName('logins') . " AS l
+			$sql = "SELECT l.access_token, u.*, r.name AS role_name
+			FROM " . self::getTableName('logins') . " AS l
 			LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
+			LEFT JOIN " . self::getTableName('roles') . " AS r ON u.role_id = r.id
 			WHERE l.access_token = :access_token
 			ORDER BY l.created_at DESC LIMIT 1";
 

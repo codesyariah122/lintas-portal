@@ -19,7 +19,7 @@ class LoginController extends ControllerCore {
 		$accessToken = $_SESSION['accessToken'];
 		$userLogoutData = LoginModel::findToken($accessToken);
 		if(!$userLogoutData) {
-			$response = ApiResources::createErrorResponse('Data Failed!!', ['message' => 'User data login failed fetch']);
+			$response = ApiResources::createErrorResponse('Data Failed!!', ['message' => 'Failed user data / Token Not Found!!!']);
 			$this->jsonResponse($response);
 		} else {			
 			$userLogout = LoginModel::delete($userLogoutData['access_token']);

@@ -17,6 +17,8 @@ if(strpos($trimmedUri, '/api/access') === 0) {
             Router::post('/logout', 'Api\Auth\LoginController@logout');
             Router::post('/add-role', 'Api\Users\RoleController@create');
             Router::post('/add-owner', 'Api\Users\UserOwnerController@create');
+
+            Router::get('/user-data', 'Api\Users\UserDataController@index');
         });
     });
 } else if (strpos($trimmedUri, '/api/auth') === 0) {
