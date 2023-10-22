@@ -14,6 +14,7 @@ $trimmedUri = rtrim($uri, '/');
 if(strpos($trimmedUri, '/api/access') === 0) {    
     Router::authMiddleware(AuthenticationMiddleware::class, function() {
         Router::group('/api/access', function() {
+            Router::post('/logout', 'Api\Auth\LoginController@logout');
             Router::post('/add-role', 'Api\Users\RoleController@create');
             Router::post('/add-owner', 'Api\Users\UserOwnerController@create');
         });

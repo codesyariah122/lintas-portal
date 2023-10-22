@@ -19,7 +19,8 @@ class Router extends RouterCore {
 
     public static function authMiddleware($middleware, $callback)
     {
-       $middleware::setResponse('Content-Type', 'application/json');
+        $middleware::setResponse('Accept', 'application/json');
+        $middleware::setResponse('Content-Type', 'application/json');
         try {
             $middleware::handle();
             $callback();

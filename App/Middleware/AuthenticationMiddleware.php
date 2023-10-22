@@ -4,6 +4,11 @@ namespace App\Middleware;
 
 class AuthenticationMiddleware {
 
+    public function __construct()
+    {
+        session_start();
+    }
+
     public static function handle() 
     {
         $headers = getallheaders();
@@ -17,12 +22,15 @@ class AuthenticationMiddleware {
         if (!self::validateAccessToken($accessToken)) {
             throw new \Exception('Autentikasi gagal', 401);
         }
+
+        return $_SESSION['accessToken'] = $accessToken;
+
     }
 
     private static function validateAccessToken($accessToken) {
-        // Anda perlu menulis logika untuk memeriksa apakah accessToken adalah valid.
-        // Ini bisa mencakup pemeriksaan di database atau sistem otentikasi eksternal.
-        // Jika accessToken valid, kembalikan true; jika tidak, kembalikan false.
+        if(isset($accessToken)) {
+            return true;
+        }
     }
 
     public static function setResponse($type, $value)

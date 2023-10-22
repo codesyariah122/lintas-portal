@@ -25,13 +25,42 @@ class LoginModel extends ModelCore {
 		return $count > 0;
 	}
 
+	public static function findToken($accessToken)
+	{
+		$db = self::initDb();
+
+		try {
+			$sql = "SELECT l.access_token, u.* FROM " . self::getTableName('logins') . " AS l
+			LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
+			WHERE l.access_token = :access_token
+			ORDER BY l.created_at DESC LIMIT 1";
+
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':access_token', $accessToken);
+
+			$stmt->execute();
+
+			$result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+			if ($result !== false) {
+				return $result;
+			} else {
+				echo "Data tidak ditemukan.";
+			}
+
+			return ['success' => true, 'message' => "successfully login!", 'data' => $result];
+		} catch (PDOException $e) {
+			return ['success' => false, 'message' => $e->getMessage()];
+		}
+	}
+
 
 	public static function all($name) {
 		return parent::all($name);
 	}
 
 	public static function findById($id){}
-	
+
 	public static function create($data) {
 		$db = self::initDb();
 		$db->beginTransaction();
@@ -68,9 +97,9 @@ class LoginModel extends ModelCore {
 			return ['success' => false, 'message' => $e->getMessage()];
 		}
 	}
-	
+
 	public static function update($id, $data){}
-	
+
 	public static function delete($id){}
 
 }

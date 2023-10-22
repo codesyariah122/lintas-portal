@@ -14,6 +14,14 @@ class LoginController extends ControllerCore {
 
 	public function all(){}
 
+	public function logout()
+	{
+		$accessToken = $_SESSION['accessToken'];
+		$userLoginData = LoginModel::findToken($accessToken);
+		$response = ApiResources::fromResponseToResult($userLoginData);
+		$this->jsonResponse($response);
+	}
+
 
 	public function create()
 	{

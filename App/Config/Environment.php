@@ -15,7 +15,6 @@ class Environment {
         'API_KEY',
         'SECRET_KEY',
         'HOST_DB',
-        'PORT_DB',
         'USER_DB',
         'DB_PW',
         'DB',
@@ -29,9 +28,9 @@ class Environment {
     public static function env()
     {
         $dotenv = parse_ini_file('.env');
-        foreach (self::$environmentVariables as $constantName) {
-            if (array_key_exists($constantName, $dotenv) && !defined($constantName)) {
-                define($constantName, $dotenv[$constantName]);
+        foreach (self::$environmentVariables as $variableName) {
+            if (array_key_exists($variableName, $dotenv) && !defined($variableName)) {
+                define($variableName, $dotenv[$variableName]);
             }
         }
     }
