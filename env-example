@@ -6,7 +6,7 @@ DB_CONNECTION=mysql
 HOST_DB=mysql
 PORT_DB=3306
 USER_DB=root
-USER_PW=root
+DB_PW=root
 DB=db_lintas
 PRIVATE_KEY_PATH=
 
