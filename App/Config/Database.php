@@ -16,9 +16,9 @@ class Database {
 	public static function connection() {
 		
 		if (self::$conn === null) {
-			$servername = HOST;
-			$username = USER;
-			$password = PASSWORD;
+			$servername = HOST_DB;
+			$username = USER_DB;
+			$password = DB_PW;
 			$dbname = DB;
 
 			try {
