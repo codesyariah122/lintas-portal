@@ -34,4 +34,16 @@ class ServiceSystem {
             }
         }
     }
+
+    public static function generateSession($data)
+    {
+        session_start();
+        $_SESSION[$data['key']] = $data['value'];
+    }
+
+    public static function destroySession($data)
+    {
+        session_start();
+        session_destroy();
+    }  
 }

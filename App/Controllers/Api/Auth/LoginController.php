@@ -23,8 +23,15 @@ class LoginController extends ControllerCore {
 			$this->jsonResponse($response);
 		} else {			
 			$userLogout = LoginModel::delete($userLogoutData['access_token']);
-			$response = ApiResources::fromResponseToResult($userLogout);
-			$this->jsonResponse($response);
+			if ($userLogout['success']) {
+				session_destroy();
+
+				$response = ApiResources::fromResponseToResult($userLogout);
+				$this->jsonResponse($response);
+			} else {
+				$response = ApiResources::fromResponseToResult($userLogout);
+				$this->jsonResponse($response);
+			}
 		}
 	}
 

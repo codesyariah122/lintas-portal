@@ -2,15 +2,12 @@
 
 namespace App\Middleware;
 
+use System\ServiceSystem;
+
 class AuthenticationMiddleware {
 
-    public function __construct()
-    {
-        session_start();
-    }
-
     public static function handle() 
-    {
+    {   
         $headers = getallheaders();
         $authorizationHeader = $headers['Authorization'] ?? '';
 
@@ -22,8 +19,11 @@ class AuthenticationMiddleware {
         if (!self::validateAccessToken($accessToken)) {
             throw new \Exception('Autentikasi gagal', 401);
         }
-
-        return $_SESSION['accessToken'] = $accessToken;
+        $dataSession = [
+            'key' => 'accessToken',
+            'value' => $accessToken
+        ];
+        return ServiceSystem::generateSession($dataSession);
 
     }
 
