@@ -15,7 +15,7 @@ if(strpos($trimmedUri, '/api/access') === 0) {
     Router::authMiddleware(AuthenticationMiddleware::class, function() {
         Router::group('/api/access', function() {
             Router::post('/add-role', 'Api\Users\RoleController@create');
-            Router::get('/add-owner', 'Api\Users\UserOwnerController@index');
+            Router::post('/add-owner', 'Api\Users\UserOwnerController@create');
         });
     });
 } else if (strpos($trimmedUri, '/api/auth') === 0) {

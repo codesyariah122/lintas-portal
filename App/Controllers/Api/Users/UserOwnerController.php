@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\Api\Auth;
+namespace App\Controllers\Api\Users;
 
 use Brick\Geo\LineString;
 use Brick\Geo\Point;
@@ -26,6 +26,7 @@ class UserOwnerController extends ControllerCore {
 			'password' => ['required' => true, 'minLength' => 8, 'passwordStrength' => true],
 			'confirm_password' => ['required' => true]
 		];
+
 
 		$errors = $this->validateInput($data, $rules);
 
@@ -62,7 +63,7 @@ class UserOwnerController extends ControllerCore {
 			$location = $point->asBinary();
 
 			$generateUuid = CustomeHelpers::generateShortUuid();
-			$roleData = RoleModel::findById(1);
+			$roleData = RoleModel::findById(isset($data['role_id']) ? $data['role_id'] : 1);
 
 			$newUserData = [
 				'uuid' => $generateUuid,

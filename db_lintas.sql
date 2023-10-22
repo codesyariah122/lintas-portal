@@ -26,25 +26,20 @@ CREATE TABLE roles (
     name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE admins (
+CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    uuid VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    role_id INT NOT NULL,
-    created_at DATETIME,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
+    title VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE authors (
+
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     uuid VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    bio TEXT DEFAULT NULL,
+    name VARCHAR(50) UNIQUE NOT NULL,
     role_id INT NOT NULL,
+    bio TEXT DEFAULT NULL,
     coordinates VARCHAR(255) DEFAULT NULL,
     displayLocation TEXT DEFAULT NULL,
     address TEXT DEFAULT NULL,
@@ -54,11 +49,6 @@ CREATE TABLE authors (
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
-CREATE TABLE categories (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -66,26 +56,11 @@ CREATE TABLE articles (
     cover_caption VARCHAR(255) NOT NULL,
     content LONGTEXT NOT NULL,
     published_at DATETIME,
-    author_id INT DEFAULT NULL,
+    user_id INT DEFAULT NULL,
     views INT DEFAULT 0,
     categories_id INT DEFAULT NULL,
     FOREIGN KEY (categories_id) REFERENCES categories(id),
-    FOREIGN KEY (author_id) REFERENCES authors(id)
-);
-
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    uuid VARCHAR(255) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    role_id INT NOT NULL,
-    coordinates VARCHAR(255) DEFAULT NULL,
-    displayLocation TEXT DEFAULT NULL,
-    address TEXT DEFAULT NULL,
-    articles_id VARCHAR(255) DEFAULT NULL,
-    created_at DATETIME,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
@@ -101,10 +76,8 @@ CREATE TABLE comments (
 CREATE TABLE logins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    author_id INT NOT NULL,
     access_token LONGTEXT NOT NULL,
     created_at TIMESTAMP DEFAULT NULL,
     update_at TIMESTAMP DEFAULT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (author_id) REFERENCES authors(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );

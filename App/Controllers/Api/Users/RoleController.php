@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\Api\Auth;
+namespace App\Controllers\Api\Users;
 
 use Core\ControllerCore;
 use App\Models\RoleModel;

@@ -5,7 +5,6 @@ use Core\ModelCore;
 use App\Resources\ApiResources;
 use Core\ServiceContainer;
 
-
 class LoginModel extends ModelCore {
 	// protected $serviceContainer;
 
@@ -13,6 +12,19 @@ class LoginModel extends ModelCore {
 	// 	parent::__construct();
 	// 	$this->serviceContainer = $serviceContainer;
 	// }
+
+	public static function isUserLoggedIn($userId)
+	{
+		$sql = "SELECT COUNT(*) FROM " . self::getTableName('logins') . " WHERE user_id = :user_id";
+		$stmt = self::initDb()->prepare($sql);
+		$stmt->bindParam(':user_id', $userId);
+		$stmt->execute();
+
+		$count = $stmt->fetchColumn();
+
+		return $count > 0;
+	}
+
 
 	public static function all($name) {
 		return parent::all($name);
@@ -25,21 +37,26 @@ class LoginModel extends ModelCore {
 		$db->beginTransaction();
 
 		try {
-			$sql = "INSERT INTO " . self::getTableName('logins') . " (user_id, author_id, access_token, created_at)
-			VALUES (:user_id, :author_id, :access_token, :created_at)";
+			$sql = "INSERT INTO " . self::getTableName('logins') . " (user_id, access_token, created_at)
+			VALUES (:user_id, :access_token, :created_at)";
 
 
 			$stmt = $db->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id']);
-			$stmt->bindParam(':author_id', $data['author_id']);
 			$stmt->bindParam(':access_token', $data['access_token']);
 			$stmt->bindParam(':created_at', $data['created_at']);
 
 			if ($stmt->execute()) {
-				$sql = "SELECT access_token FROM " . self::getTableName('logins') . " ORDER BY created_at DESC LIMIT 1";
-				$result = $db->query($sql);
+				$sql = "SELECT l.access_token, u.* FROM " . self::getTableName('logins') . " AS l
+				LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
+				WHERE l.user_id = :user_id
+				ORDER BY l.created_at DESC LIMIT 1";
 
-				$lastInsertedData = $result->fetchAll(\PDO::FETCH_ASSOC);
+				$result = $db->prepare($sql);
+				$result->bindParam(':user_id', $data['user_id']);
+				$result->execute();
+
+				$lastInsertedData = $result->fetch(\PDO::FETCH_ASSOC);
 				$db->commit();
 				return ['success' => true, 'message' => "successfully login!", 'data' => $lastInsertedData];
 			} else {
