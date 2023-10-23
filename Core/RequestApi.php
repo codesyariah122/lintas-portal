@@ -3,14 +3,14 @@ namespace Core;
 
 use System\ApiSystem;
 
-abstract class RequestApi implements RequestApiInterface {
+abstract class RequestApi extends ApiSystem implements RequestApiInterface {
 
     public static function getRequestHttp($url, $apiKey, $type) {
         switch($type) {
             case 'curl':
-            return ApiSystem::getHttpCurl($url, $apiKey);
+            return self::getHttpCurl($url, $apiKey);
             case 'fileContents':
-            return ApiSystem::getHttpContents($url);
+            return self::getHttpContents($url);
         }
     }
 }
