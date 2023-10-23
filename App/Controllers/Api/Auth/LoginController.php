@@ -38,7 +38,7 @@ class LoginController extends ControllerCore {
 
 	public function create()
 	{
-		$data = @$_POST;
+		$data = @$_REQUEST;
 		$email = $data['email'];
 		$password = $data['password'];
 
@@ -76,7 +76,6 @@ class LoginController extends ControllerCore {
 
 					$loginData = [
 						'user_id' => $user['id'],
-						'author_id' => null,
 						'access_token' => $token,
 						'created_at' => date('Y-m-d H:i:s'),
 						'exp_time' => $data['exp']
