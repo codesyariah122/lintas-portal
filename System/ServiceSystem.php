@@ -38,7 +38,11 @@ class ServiceSystem {
     public static function generateSession($data)
     {
         session_start();
-        $_SESSION[$data['key']] = $data['value'];
+        foreach ($data as $item) {
+            $key = $item['key'];
+            $value = $item['value'];
+            $_SESSION[$key] = $value;
+        }
     }
 
     public static function destroySession($data)

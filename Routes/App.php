@@ -15,10 +15,11 @@ if(strpos($trimmedUri, '/api/access') === 0) {
     Router::authMiddleware(AuthenticationMiddleware::class, function() {
         Router::group('/api/access', function() {
             Router::post('/logout', 'Api\Auth\LoginController@logout');
+            Router::get('/user-data', 'Api\Users\UserDataController@index');
+
             Router::post('/add-role', 'Api\Users\RoleController@create');
             Router::post('/add-owner', 'Api\Users\UserOwnerController@create');
-
-            Router::get('/user-data', 'Api\Users\UserDataController@index');
+            Router::get('/roles', 'Api\Users\RoleController@all');
         });
     });
 } else if (strpos($trimmedUri, '/api/auth') === 0) {
@@ -39,9 +40,6 @@ if(strpos($trimmedUri, '/api/access') === 0) {
             Router::get('/subdistrict', 'Api\Public\GeoLocatorController@subDistrict');
             Router::get('/ward-lists', 'Api\Public\GeoLocatorController@wardLists');
             Router::get('/search-location', 'Api\Public\GeoLocatorController@searchLocation');
-
-            // Roles user lists
-            Router::get('/roles', 'Api\Users\RoleController@all');
         });
 
         Router::group('/api/user', function(){

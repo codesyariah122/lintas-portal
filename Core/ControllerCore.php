@@ -8,7 +8,8 @@ namespace Core;
 
 use System\{ApiSystem, ServiceSystem, ViewSystem};
 
-abstract class ControllerCore implements ControllerInterface, ViewInterface {
+abstract class ControllerCore extends ViewSystem 
+implements ControllerInterface, ViewInterface {
 
     public function __construct() {
         ServiceSystem::generateAccess('API_KEY', API_KEY);
@@ -31,7 +32,7 @@ abstract class ControllerCore implements ControllerInterface, ViewInterface {
 
     public static function render($view, $data)
     {
-        return ViewSystem::renderViewSystem($view, $data);
+        return self::renderViewSystem($view, $data);
     }
 }
 

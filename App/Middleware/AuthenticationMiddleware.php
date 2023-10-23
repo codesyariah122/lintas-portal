@@ -2,14 +2,16 @@
 
 namespace App\Middleware;
 
-use System\ServiceSystem;
+use System\GateAccessUserSystem;
 use App\Models\LoginModel;
 
-class AuthenticationMiddleware {
+class AuthenticationMiddleware extends GateAccessUserSystem {
 
 
     public static function handle() 
     {   
+        session_start();
+
         $headers = getallheaders();
         $authorizationHeader = $headers['Authorization'] ?? '';
 
@@ -21,11 +23,14 @@ class AuthenticationMiddleware {
         if (!self::validateAccessToken($accessToken)) {
             throw new \Exception('Autentikasi gagal', 401);
         }
-        $dataSession = [
-            'key' => 'accessToken',
-            'value' => $accessToken
-        ];
-        return ServiceSystem::generateSession($dataSession);
+
+        $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
+
+        $hasAccess = self::hasAccess(['uri' => $uri, 'accessToken' => $accessToken]);
+
+        if(!$hasAccess) {
+            throw new \Exception('Forbaiden Access', 401);
+        }
 
     }
 

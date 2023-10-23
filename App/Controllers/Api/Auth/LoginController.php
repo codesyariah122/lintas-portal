@@ -43,9 +43,7 @@ class LoginController extends ControllerCore {
 		$password = $data['password'];
 
 		$privateKeyPath = PRIVATE_KEY_PATH;
-		$publicKeyPath = PUBLIC_KEY_PATH;
 		$privateKey = file_get_contents($privateKeyPath);
-		$publicKey = file_get_contents($publicKeyPath);
 
 		$rules = [
 			'email' => ['required' => true, 'email' => true],
@@ -83,7 +81,7 @@ class LoginController extends ControllerCore {
 						'created_at' => date('Y-m-d H:i:s'),
 						'exp_time' => $data['exp']
 					];
-					
+
 					$insertResult = LoginModel::create($loginData);
 					$response = ApiResources::fromResponseToResult($insertResult);
 					$this->jsonResponse($response);

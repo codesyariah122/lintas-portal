@@ -91,19 +91,42 @@ class LoginModel extends ModelCore {
 				$lastInsertedData = $result->fetch(\PDO::FETCH_ASSOC);
 				$lastInsertedData['exp_time'] = $data['exp_time'];
 				$db->commit();
+
+				// Set session user
 				$dataSession = [
-					'key' => 'expTime',
-					'value' => $data['exp_time']
+					[
+						'key' => 'expTime',
+						'value' => $data['exp_time']
+					],
+					[
+						'key' => 'accessToken',
+						'value' => $lastInsertedData['access_token']
+					],
+					[
+						'key' => 'roles',
+						'value' => $lastInsertedData['role_id']
+					]
 				];
 				ServiceSystem::generateSession($dataSession);
-				return ['success' => true, 'message' => "successfully login!", 'data' => $lastInsertedData];
+				
+				return [
+					'success' => true, 
+					'message' => "successfully login!", 
+					'data' => $lastInsertedData
+				];
 			} else {
 				$db->rollBack();
-				return ['success' => false, 'message' => "SQL Error: " . $stmt->errorInfo()[2]];
+				return [
+					'success' => false,
+					'message' => "SQL Error: " . $stmt->errorInfo()[2]
+				];
 			}
 		} catch (\PDOException $e) {
 			$db->rollBack();
-			return ['success' => false, 'message' => $e->getMessage()];
+			return [
+				'success' => false,
+				'message' => $e->getMessage()
+			];
 		}
 	}
 
