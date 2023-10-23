@@ -1,13 +1,14 @@
 <?php
 /**
  * @author Puji Ermanto <pujiermanto@gmail.com>
+ * @return {RouteSystem | Autoload}
  * */
 
 require_once 'vendor/autoload.php';
 
 use App\Config\Autoload;
+use System\RouteSystem;
 
 Autoload::go();
 
-require_once __DIR__  . '/Routes/App.php';
-
+RouteSystem::generateRoute();

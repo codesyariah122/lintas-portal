@@ -1,11 +1,11 @@
 <?php
 namespace System;
 
-use System\UriAccessSystem;
+use Core\Commons\UriAccessCore;
 use App\Models\{UserModel, RoleModel, LoginModel};
 
 
-class GateAccessUserSystem extends UriAccessSystem {
+class GateAccessUserSystem extends UriAccessCore {
 
 	protected static function hasAccess($data)
 	{	

@@ -1,8 +1,7 @@
 <?php
-namespace System;
+namespace Core\Commons;
 
-class UriAccessSystem {
-
+class UriAccessCore {
 	public static function routePattern()
 	{
 		return [

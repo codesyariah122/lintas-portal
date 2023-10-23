@@ -114,6 +114,7 @@ class ApiSystem {
     public static function jsonResponseGenerate($data)
     {
     	if (is_object($data) || is_array($data)) {
+    		header('Content-Type: application/json');
     		echo json_encode($data);
     	}
     }

@@ -7,7 +7,6 @@ use App\Middleware\JsonResponseMiddleware;
 use App\Middleware\AuthenticationMiddleware;
 use App\Config\Router;
 
-
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
 $trimmedUri = rtrim($uri, '/');
 
@@ -29,8 +28,6 @@ if(strpos($trimmedUri, '/api/access') === 0) {
         });
     });
 } else {
-    Router::get('/', 'HomeController@index');
-
     Router::jsonMiddleware(JsonResponseMiddleware::class, function () {
         Router::group('/api/public', function (){
             Router::get('/get-ip', 'Api\Public\GeoLocatorController@getIp');
