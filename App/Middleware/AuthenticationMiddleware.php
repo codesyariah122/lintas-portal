@@ -3,6 +3,7 @@
 namespace App\Middleware;
 
 use System\GateAccessUserSystem;
+use Core\Headers;
 use App\Models\LoginModel;
 
 class AuthenticationMiddleware extends GateAccessUserSystem {
@@ -12,7 +13,7 @@ class AuthenticationMiddleware extends GateAccessUserSystem {
     {   
         session_start();
 
-        $headers = getallheaders();
+        $headers = Headers::getallheaders();
         $authorizationHeader = $headers['Authorization'] ?? '';
 
         if (empty($authorizationHeader) || !str_starts_with($authorizationHeader, 'Bearer ')) {

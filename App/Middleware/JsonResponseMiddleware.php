@@ -6,11 +6,13 @@
 
 namespace App\Middleware;
 
-class JsonResponseMiddleware {
+use Core\Headers;
+
+class JsonResponseMiddleware extends Headers  {
 
     public static function handle($type, $value)
     {
-        $headers = getallheaders();
+        $headers = self::getallheaders();
         if (isset($headers['X-Api-Key'])) {
             header("{$type}: {$value}");
         }
