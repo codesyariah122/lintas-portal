@@ -29,7 +29,7 @@ class AuthenticationMiddleware extends GateAccessUserSystem {
         $hasAccess = self::hasAccess(['uri' => $uri, 'accessToken' => $accessToken]);
 
         if(!$hasAccess) {
-            throw new \Exception('Forbaiden Access', 401);
+            throw new \Exception('Forbaiden if your not owner !', 401);
         }
 
     }

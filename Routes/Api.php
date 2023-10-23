@@ -3,8 +3,7 @@
 * @author : Puji Ermanto <pujiermanto@gmail.com>
 * @return : {Router::Class} {Controller@Method}
 **/
-use App\Middleware\JsonResponseMiddleware;
-use App\Middleware\AuthenticationMiddleware;
+use App\Middleware\{JsonResponseMiddleware, AuthenticationMiddleware};
 use App\Config\Router;
 
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');

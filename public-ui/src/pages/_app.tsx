@@ -1,3 +1,8 @@
+/**
+ * @author Puji Ermanto <pujiermanto@gmail.com>
+ * @return {ReactElemnt || ReactNode}
+ * */
+
 import * as React from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
