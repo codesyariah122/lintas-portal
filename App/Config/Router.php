@@ -17,6 +17,7 @@ class Router extends RouterCore {
     private static $routes = [];
     private static $groupPrefix = '';
 
+    // Custome middleware
     public static function authMiddleware($middleware, $callback)
     {
         $middleware::setResponse('Accept', 'application/json');
@@ -38,6 +39,7 @@ class Router extends RouterCore {
 
         $callback();
     }
+
 
     public static function group($prefix, $callback): void {
         self::$groupPrefix = $prefix;

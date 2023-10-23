@@ -5,7 +5,7 @@ use Core\Commons\RouteListCore;
 
 class RouteSystem extends RouteListCore {
 
-	public static function generateRoute()
+	public function __construct()
 	{
 		$listRoutes = self::listRoutes();
 

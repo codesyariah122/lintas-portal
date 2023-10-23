@@ -6,9 +6,9 @@
 
 require_once 'vendor/autoload.php';
 
-use App\Config\Autoload;
+use App\Config\Autoload as Load;
 use System\RouteSystem;
 
-Autoload::go();
+Load::go();
 
-RouteSystem::generateRoute();
+new RouteSystem();
