@@ -15,9 +15,13 @@ if(strpos($trimmedUri, '/api/access') === 0) {
             Router::post('/logout', 'Api\Auth\LoginController@logout');
             Router::get('/user-data', 'Api\Users\UserDataController@index');
 
+            // Owner Access
             Router::post('/add-role', 'Api\Users\RoleController@create');
             Router::post('/add-owner', 'Api\Users\UserOwnerController@create');
             Router::get('/roles', 'Api\Users\RoleController@all');
+
+            // Author Access
+            Router::post('/add-article', 'Api\Portal\ArticleController@create');
         });
     });
 } else if (strpos($trimmedUri, '/api/auth') === 0) {

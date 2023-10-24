@@ -19,7 +19,7 @@ class RegisterController extends ControllerCore {
 
 	public function create()
 	{
-		$data = @$_POST;
+		$data = @$_REQUEST;
 		$rules = [
 			'email' => ['required' => true, 'email' => true],
 			'name' => ['required' => true, 'minLength' => 3],

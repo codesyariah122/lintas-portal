@@ -1,0 +1,35 @@
+// String yang akan dipangkas
+$uri = "/api/access/user-data";
+
+// Potong string menjadi dua bagian
+list($prefix, $suffix) = explode("/user-data", $uri);
+
+// Array rules
+$rules = \System\UriAccessSystem::rules();
+
+// Periksa prefix
+$prefixMatch = false;
+foreach ($rules['prefix'] as $rule) {
+    if ($prefix === $rule['uri']) {
+        $prefixMatch = true;
+        break;
+    }
+}
+
+// Periksa suffix
+$suffixMatch = false;
+foreach ($rules['suffix'] as $rule) {
+    if ($suffix === $rule['uri']) {
+        $suffixMatch = true;
+        break;
+    }
+}
+
+// Contoh kondisi
+if ($prefixMatch && $suffixMatch) {
+    // String cocok dengan aturan pada prefix dan suffix.
+    echo "String sesuai dengan aturan.";
+} else {
+    // String tidak cocok dengan aturan pada prefix dan suffix.
+    echo "String tidak sesuai dengan aturan.";
+}

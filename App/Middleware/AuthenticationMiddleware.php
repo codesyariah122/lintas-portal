@@ -27,10 +27,10 @@ class AuthenticationMiddleware extends GateAccessUserSystem {
 
         $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
 
-        $hasAccess = self::hasAccess(['uri' => $uri, 'accessToken' => $accessToken]);
+        $hasAccess = self::hasAccess(['uri' => $uri, 'accessToken' => $accessToken, 'roles' => $_SESSION['roles'], 'role_name' => $_SESSION['role_name']]);
 
         if(!$hasAccess) {
-            throw new \Exception('Forbaiden if your not owner !', 401);
+            throw new \Exception("Forbaiden if you login as {$_SESSION['role_name']} ...", 401);
         }
 
     }

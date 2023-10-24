@@ -79,8 +79,10 @@ class LoginModel extends ModelCore {
 			$stmt->bindParam(':created_at', $data['created_at']);
 
 			if ($stmt->execute()) {
-				$sql = "SELECT l.access_token, u.* FROM " . self::getTableName('logins') . " AS l
+				$sql = "SELECT l.access_token, u.*, r.name AS role_name 
+				FROM " . self::getTableName('logins') . " AS l
 				LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
+				LEFT JOIN " . self::getTableName('roles') . " AS r ON u.role_id = r.id
 				WHERE l.user_id = :user_id
 				ORDER BY l.created_at DESC LIMIT 1";
 
@@ -105,6 +107,10 @@ class LoginModel extends ModelCore {
 					[
 						'key' => 'roles',
 						'value' => $lastInsertedData['role_id']
+					],
+					[
+						'key' => 'role_name',
+						'value' => $lastInsertedData['role_name']
 					]
 				];
 				ServiceSystem::generateSession($dataSession);

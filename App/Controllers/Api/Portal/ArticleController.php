@@ -12,7 +12,7 @@ class ArticleController extends ControllerCore {
 
 	public function create()
 	{
-		$data = @$_POST;
+		$data = @$_REQUEST;
 
 		var_dump($data);
 		
