@@ -257,38 +257,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "UserManagement",
-					"item": [
-						{
-							"name": "rolesList",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Api-Key",
-										"value": "{{api_access}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://lintas.xz/api/public/roles",
-									"protocol": "http",
-									"host": [
-										"lintas",
-										"xz"
-									],
-									"path": [
-										"api",
-										"public",
-										"roles"
-									]
-								}
-							},
-							"response": []
-						}
-					]
 				}
 			]
 		},
@@ -311,7 +279,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "ddg_dadang@gmail.com",
+									"value": "aa_boxer@gmail.com",
 									"type": "text"
 								},
 								{
@@ -341,8 +309,108 @@
 			"name": "/api/access",
 			"item": [
 				{
+					"name": "UserManagement",
+					"item": [
+						{
+							"name": "rolesList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/access/roles",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"access",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AuthorAccess",
+					"item": [
+						{
+							"name": "addNewArticle",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{api_access}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Testing article",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_url}}/api/access/add-article",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"access",
+										"add-article"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "createNewRole",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -362,7 +430,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "owner",
+									"value": "authors",
 									"type": "text"
 								}
 							]
@@ -549,12 +617,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "ddg_dadang@gmail.com",
+									"value": "aa_boxer@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "name",
-									"value": "Dadang Kondor",
+									"value": "AA Sukmara",
 									"type": "text"
 								},
 								{
@@ -569,7 +637,7 @@
 								},
 								{
 									"key": "address",
-									"value": "banjaran bandung",
+									"value": "cicadas bandung",
 									"type": "text"
 								},
 								{
@@ -580,8 +648,7 @@
 								{
 									"key": "bio",
 									"value": "Saya author baru loh",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
