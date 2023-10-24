@@ -6,8 +6,6 @@
 **/
 namespace App\Config;
 
-use App\Config\Environment;
-
 class Autoload {
 
 	public static function go()

@@ -2,11 +2,11 @@
 
 namespace App\Middleware;
 
-use System\GateAccessUserSystem;
+use System\GateAccessUserSystem as SystemAccess;
 use Core\Headers;
 use App\Models\LoginModel;
 
-class AuthenticationMiddleware extends GateAccessUserSystem {
+class AuthenticationMiddleware extends SystemAccess {
 
 
     public static function handle() 

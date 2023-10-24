@@ -7,8 +7,6 @@
 
 namespace App\Config;
 
-use App\Config\Environment;
-
 class Database {
 
 	private static $conn = null;

@@ -28,13 +28,15 @@ class UriAccessCore {
 	{
 		return [
 			'prefix' => [
-				['uri' => '/api/access']
+				['uri' => '/api/access'],
+				['uri' => '/api/auth'],
+				['uri' => '/api/public']
 			],
 			'suffix' => [
 				['uri' => '/roles'],
 				['uri' => '/add-role'],
 				['uri' => '/add-owner']
-			]
+			],
 		];
 	}
 }

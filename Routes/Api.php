@@ -5,9 +5,12 @@
 **/
 use App\Middleware\{JsonResponseMiddleware, AuthenticationMiddleware};
 use App\Config\Router;
+use Core\Commons\UriAccessCore;
 
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
 $trimmedUri = rtrim($uri, '/');
+
+// var_dump(UriAccessCore::rules()); die;
 
 if(strpos($trimmedUri, '/api/access') === 0) {    
     Router::authMiddleware(AuthenticationMiddleware::class, function() {
