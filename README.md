@@ -16,6 +16,28 @@ chmod +x openssl_sign.sh
 
 ```
 
+#### If use nginx
+
+**Adding this line inside sites conf**
+
+```
+location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+         if ($request_method = 'OPTIONS') {
+         add_header 'Access-Control-Allow-Origin' '*';
+         add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+         add_header 'Access-Control-Allow-Headers' 'X-Api-Key, Content-Type';
+         add_header 'Access-Control-Max-Age' 1728000;
+         add_header 'Content-Type' 'text/plain; charset=utf-8';
+         add_header 'Content-Length' 0;
+         return 204;
+         }
+         add_header 'Access-Control-Allow-Origin' '*';
+         add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+         add_header 'Access-Control-Allow-Headers' 'X-Api-Key, Content-Type';
+    }
+```
+
 **Manual create openssl key**
 
 ```
