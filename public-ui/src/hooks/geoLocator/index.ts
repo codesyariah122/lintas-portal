@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { CORE_URL } from "@/constants/env";
-
-const apiKey = "3cdb95819e0bddb327ef14508105f444";
+import { CORE_URL, API_KEY } from "@/constants/env";
 
 const fetchGetLocator = async () => {
-	const response = await fetch(`${CORE_URL}/geo-locator`, {
+	const response = await fetch(`${CORE_URL}/public/geo-locator`, {
 		method: "GET",
 		headers: {
-			"X-Api-Key": apiKey,
+			"X-Api-Key": API_KEY,
 		},
 	});
 

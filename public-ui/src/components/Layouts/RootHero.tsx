@@ -10,7 +10,7 @@ export default function RootHero() {
 						Cara baru berbagi ragam informasi dan berita.
 					</p>
 					<button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 mt-6 rounded-full">
-						Mulai Kontribusi
+						Jadi Kontributor
 					</button>
 				</div>
 			</div>
