@@ -67,9 +67,12 @@ class LoginController extends ControllerCore {
 				$userIsLoggedIn = LoginModel::isUserLoggedIn($user['id']);
 
 				if (!$userIsLoggedIn) {
+					$expTime = strtotime('+1 hour');
+					$expTimeFormatted = date('Y-m-d H:i:s', $expTime);
+
 					$data = [
 						'user_id' => $user['id'],
-						'exp' => strtotime('+1 hour'),
+						'exp_time' => $expTimeFormatted,
 					];
 
 					$token = JWT::encode($data, $privateKey, 'RS256', null, null);
@@ -78,7 +81,7 @@ class LoginController extends ControllerCore {
 						'user_id' => $user['id'],
 						'access_token' => $token,
 						'created_at' => date('Y-m-d H:i:s'),
-						'exp_time' => $data['exp']
+						'exp_time' => $data['exp_time']
 					];
 
 					$insertResult = LoginModel::create($loginData);

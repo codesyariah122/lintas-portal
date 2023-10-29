@@ -43,6 +43,9 @@ if(strpos($trimmedUri, '/api/access') === 0) {
             Router::get('/subdistrict', 'Api\Public\GeoLocatorController@subDistrict');
             Router::get('/ward-lists', 'Api\Public\GeoLocatorController@wardLists');
             Router::get('/search-location', 'Api\Public\GeoLocatorController@searchLocation');
+
+            // Article Lists
+            Router::get('/article-lists', 'Api\Portal\ArticleController@all');
         });
 
         Router::group('/api/user', function(){

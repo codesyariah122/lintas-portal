@@ -25,6 +25,16 @@ class UserModel extends ModelCore {
 		return $count > 0;
 	}
 
+	public static function getUserByRoles($roleId)
+	{
+		$sql = "SELECT * FROM " . self::getTableName('users') . " WHERE role_id = :role_id";
+		$stmt = self::initDb()->prepare($sql);
+		$stmt->bindParam(':role_id', $roleId);
+		$stmt->execute();
+
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+
 	public static function getUserByEmail($email) {
 		$sql = "SELECT * FROM " . self::getTableName('users') . " WHERE email = :email";
 		$stmt = self::initDb()->prepare($sql);

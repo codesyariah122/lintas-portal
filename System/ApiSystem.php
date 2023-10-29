@@ -10,7 +10,6 @@ class ApiSystem {
 	public static function inputValidationSystem($data, $rules)
 	{
 		$errors = [];
-
 		foreach ($rules as $field => $rule) {
 			if (empty($data[$field])) {
 				$errors[$field] = "$field is required.";

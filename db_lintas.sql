@@ -57,6 +57,7 @@ CREATE TABLE articles (
     content LONGTEXT NOT NULL,
     published_at DATETIME,
     user_id INT DEFAULT NULL,
+    location LONGTEXT DEFAULT NULL,
     views INT DEFAULT 0,
     categories_id INT DEFAULT NULL,
     FOREIGN KEY (categories_id) REFERENCES categories(id),
@@ -77,6 +78,7 @@ CREATE TABLE logins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     access_token LONGTEXT NOT NULL,
+    exp_time TIMESTAMP DEFAULT NULL,
     created_at TIMESTAMP DEFAULT NULL,
     update_at TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)

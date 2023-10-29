@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { CORE_URL, API_KEY } from "@/constants/env";
 
-const fetchGetLocator = async () => {
-	const response = await fetch(`${CORE_URL}/public/geo-locator`, {
+const fetchArticleData = async () => {
+	const response = await fetch(`${CORE_URL}/public/article-lists`, {
 		method: "GET",
 		headers: {
 			"X-Api-Key": API_KEY,
@@ -17,11 +17,11 @@ const fetchGetLocator = async () => {
 	return result;
 };
 
-const useGeoLocator = () => {
+const useArticleData = () => {
 	return useQuery({
-		queryKey: ["getLocator"],
-		queryFn: async () => await fetchGetLocator(),
+		queryKey: ["getArticleData"],
+		queryFn: async () => await fetchArticleData(),
 	});
 };
 
-export { useGeoLocator };
+export { useArticleData };

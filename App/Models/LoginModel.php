@@ -69,13 +69,14 @@ class LoginModel extends ModelCore {
 		$db->beginTransaction();
 
 		try {
-			$sql = "INSERT INTO " . self::getTableName('logins') . " (user_id, access_token, created_at)
-			VALUES (:user_id, :access_token, :created_at)";
+			$sql = "INSERT INTO " . self::getTableName('logins') . " (user_id, access_token, exp_time, created_at)
+			VALUES (:user_id, :access_token, :exp_time, :created_at)";
 
 
 			$stmt = $db->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id']);
 			$stmt->bindParam(':access_token', $data['access_token']);
+			$stmt->bindParam(':exp_time', $data['exp_time']);
 			$stmt->bindParam(':created_at', $data['created_at']);
 
 			if ($stmt->execute()) {
