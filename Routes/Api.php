@@ -10,7 +10,7 @@ $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
 $trimmedUri = rtrim($uri, '/');
 $apiPrefix = '/api';
 
-if(strpos($trimmedUri, '/api/access') === 0) {
+if(strpos($trimmedUri, "{$apiPrefix}/access") === 0) {
     Router::authMiddleware(AuthenticationMiddleware::class, function () use ($apiPrefix) {
         Router::group($apiPrefix . '/access', function () {
             Router::post('/logout', 'Api\Auth\LoginController@logout');
@@ -28,7 +28,7 @@ if(strpos($trimmedUri, '/api/access') === 0) {
 }
 
 
-if (strpos($trimmedUri, '/api/auth') === 0) {
+if (strpos($trimmedUri, "{$apiPrefix}/auth") === 0) {
     Router::jsonMiddleware(JsonResponseMiddleware::class, function () use ($apiPrefix) {
         Router::group($apiPrefix . '/auth', function () {
             Router::post('/login', 'Api\Auth\LoginController@create');
