@@ -6,10 +6,10 @@
 use App\Middleware\{JsonResponseMiddleware, AuthenticationMiddleware};
 use App\Config\Router;
 
-$uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
-$trimmedUri = rtrim($uri, '/');
-$apiPrefix = '/api';
+$trimmedUri = Router::trimmedUriString();
+$apiPrefix = Router::$apiPrefix;
 
+// Base on authentication middleware access 
 if(strpos($trimmedUri, "{$apiPrefix}/access") === 0) {
     Router::authMiddleware(AuthenticationMiddleware::class, function () use ($apiPrefix) {
         Router::group($apiPrefix . '/access', function () {
@@ -28,7 +28,7 @@ if(strpos($trimmedUri, "{$apiPrefix}/access") === 0) {
 }
 
 
-if (strpos($trimmedUri, "{$apiPrefix}/auth") === 0) {
+if (strpos($trimmedUri, "{$apiPrefix}/auth") == 0) {
     Router::jsonMiddleware(JsonResponseMiddleware::class, function () use ($apiPrefix) {
         Router::group($apiPrefix . '/auth', function () {
             Router::post('/login', 'Api\Auth\LoginController@create');
@@ -37,6 +37,7 @@ if (strpos($trimmedUri, "{$apiPrefix}/auth") === 0) {
 }
 
 
+// Public middleware access
 Router::jsonMiddleware(JsonResponseMiddleware::class, function () use ($apiPrefix) {
     Router::group($apiPrefix . '/public', function () {
         Router::get('/get-ip', 'Api\Public\GeoLocatorController@getIp');
@@ -55,8 +56,6 @@ Router::jsonMiddleware(JsonResponseMiddleware::class, function () use ($apiPrefi
         Router::post('/new-register', 'Api\Auth\RegisterController@create');
     });
 });
-
-
 
 
 
