@@ -13,9 +13,9 @@ class AuthenticationMiddleware extends SystemAccess {
     {   
         session_start();
 
-        if(!isset($_SESSION['roles']) && !isset($_SESSION['role_name'])):
-           throw new \Exception('Not Login Yet / Login session stale', 403);
-        endif;
+        // if(!isset($_SESSION['roles']) && !isset($_SESSION['role_name'])):
+        //    throw new \Exception('Not Login Yet / Login session stale', 403);
+        // endif;
 
         $headers = Headers::getallheaders();
         $authorizationHeader = $headers['Authorization'] ?? '';
