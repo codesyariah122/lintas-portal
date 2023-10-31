@@ -9,20 +9,20 @@ interface Article {
 	cover: string;
 }
 
-export default function ArtcileLists() {
-	const {
-		data: articleLists,
-		isLoading: isLoadingArticle,
-		isError: isErrorArticle,
-	} = useArticleData();
+interface ArticleProps {
+	articleLists: Object;
+	isLoading: Boolean;
+	isError: Boolean;
+}
 
-	React.useEffect(() => {
-		console.log(articleLists);
-	}, []);
-
+export default function ArtcileLists({
+	articleLists,
+	isLoading,
+	isError,
+}: ArticleProps) {
 	return (
 		<div>
-			{isLoadingArticle ? (
+			{isLoading ? (
 				<div>
 					<h1>Article is loading ... now</h1>
 				</div>

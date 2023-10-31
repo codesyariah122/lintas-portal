@@ -1,12 +1,11 @@
 import * as React from "react";
 import { NextPage } from "next";
-import _ from "lodash";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { ListGroup } from "flowbite-react";
 import { RootLayout } from "@/layouts/RootLayout";
-import { useGeoLocator } from "@/hooks";
+import { useGeoLocator, useArticleData } from "@/hooks";
 import { ArticleLists } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,6 +17,12 @@ const Home: NextPage = () => {
     isLoading: isLoadingGeo,
     isError: isErrorGeo,
   } = useGeoLocator();
+
+  const {
+    data: articleLists,
+    isLoading: isLoadingArticle,
+    isError: isErrorArticle,
+  } = useArticleData();
 
   return (
     <RootLayout>
@@ -48,7 +53,11 @@ const Home: NextPage = () => {
         )}
       </div>
       <div className="flex justify-center w-full mb-16">
-        <ArticleLists />
+        <ArticleLists
+          articleLists={articleLists}
+          isLoading={isLoadingArticle}
+          isError={isErrorArticle}
+        />
       </div>
     </RootLayout>
   );
