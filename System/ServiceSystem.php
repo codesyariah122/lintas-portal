@@ -47,7 +47,6 @@ class ServiceSystem {
 
     public static function destroySession()
     {
-        session_start();
         session_destroy();
     }  
 }
