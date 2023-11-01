@@ -36,7 +36,7 @@ class AuthenticationMiddleware extends SystemAccess {
                 $logout = LoginModel::delete($accessToken);
 
                 if($logout['success']) {
-                    ServiceSystem::destroySession();
+                    // ServiceSystem::destroySession();
                     throw new \Exception("Your login session has expired...", 401);
                 } else {
                     throw new \Exception('Please login first !!!', 401);
