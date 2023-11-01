@@ -10,6 +10,7 @@ class CustomeHelpers {
 
 	public static function timestampFormat($timestamp)
 	{
+		$timestamp = is_numeric($timestamp) ? $timestamp : strtotime($timestamp);
 		return date('Y-m-d H:i:s', $timestamp);
 	}
 

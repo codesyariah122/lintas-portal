@@ -31,12 +31,13 @@ class LoginModel extends ModelCore {
 		$db = self::initDb();
 
 		try {
-			$sql = "SELECT l.access_token,l.exp_time, u.*, r.name AS role_name
+			$sql = "SELECT l.access_token, l.exp_time, u.id, u.email, u.name, u.role_id, r.name AS role_name
 			FROM " . self::getTableName('logins') . " AS l
 			LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
 			LEFT JOIN " . self::getTableName('roles') . " AS r ON u.role_id = r.id
 			WHERE l.access_token = :access_token
 			ORDER BY l.created_at DESC LIMIT 1";
+
 
 			$stmt = $db->prepare($sql);
 			$stmt->bindParam(':access_token', $accessToken);
