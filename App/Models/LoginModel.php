@@ -31,7 +31,7 @@ class LoginModel extends ModelCore {
 		$db = self::initDb();
 
 		try {
-			$sql = "SELECT l.access_token, u.*, r.name AS role_name
+			$sql = "SELECT l.access_token,l.exp_time, u.*, r.name AS role_name
 			FROM " . self::getTableName('logins') . " AS l
 			LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
 			LEFT JOIN " . self::getTableName('roles') . " AS r ON u.role_id = r.id

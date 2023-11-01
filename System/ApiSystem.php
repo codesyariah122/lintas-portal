@@ -117,4 +117,18 @@ class ApiSystem {
     		echo json_encode($data);
     	}
     }
+
+    public static function cleanInputSystem($input)
+    {
+    	if (is_array($input)) {
+    		return array_map([self::class, 'cleanInput'], $input);
+    	} else {
+    		return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+    	}
+    }
+
+    public static function cleanInput($input)
+    {
+    	return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+    }
 }

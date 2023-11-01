@@ -1,1 +1,1 @@
-export { default as ArticleLists } from "./ArticleLists";
+export { default as AllArticles } from "./AllArticles";

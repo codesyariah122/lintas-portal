@@ -25,6 +25,11 @@ implements ControllerInterface, ViewInterface {
         return ApiSystem::jsonResponseGenerate($data);
     }
 
+    protected function cleanInput($input)
+    {
+        return ApiSystem::cleanInputSystem($input);
+    }
+
     protected static function validateInput($data, $rules) {
         // using system
         return ApiSystem::inputValidationSystem($data, $rules);

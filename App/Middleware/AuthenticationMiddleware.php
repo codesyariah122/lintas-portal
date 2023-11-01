@@ -3,6 +3,7 @@
 namespace App\Middleware;
 
 use System\GateAccessUserSystem as SystemAccess;
+use System\ServiceSystem;
 use Core\Headers;
 use App\Models\LoginModel;
 
@@ -25,6 +26,24 @@ class AuthenticationMiddleware extends SystemAccess {
         }
 
         $accessToken = substr($authorizationHeader, 7);
+
+        $isExpiredLogin = LoginModel::findToken($accessToken);
+        if(is_array($isExpiredLogin)){            
+            $currentDateTime = new \DateTime();
+            $expirationDateTime = new \DateTime($isExpiredLogin['exp_time']);
+
+            if ($currentDateTime > $expirationDateTime) {
+                $logout = LoginModel::delete($accessToken);
+
+                if($logout['success']) {
+                    ServiceSystem::destroySession();
+                    throw new \Exception("Your login session has expired...", 401);
+                } else {
+                    throw new \Exception('Please login first !!!', 401);
+                }
+            }
+        }
+
         if (!self::validateAccessToken($accessToken)) {
             throw new \Exception('Autentikasi gagal', 401);
         }

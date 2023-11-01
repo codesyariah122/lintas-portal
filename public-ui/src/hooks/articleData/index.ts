@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { CORE_URL, API_KEY } from "@/constants/env";
 
-const fetchArticleData = async () => {
+const fetchAllArticles = async () => {
 	const response = await fetch(`${CORE_URL}/public/article-lists`, {
 		method: "GET",
 		headers: {
@@ -10,18 +10,18 @@ const fetchArticleData = async () => {
 	});
 
 	if (!response.ok) {
-		throw new Error("Failed to fetch data");
+		throw new Error("Failed fetch article lists!");
 	}
 
-	const result = await response.json();
-	return result;
+	const results = await response.json();
+	return results;
 };
 
-const useArticleData = () => {
+const useAllArticles = () => {
 	return useQuery({
-		queryKey: ["getArticleData"],
-		queryFn: async () => await fetchArticleData(),
+		queryKey: ["getAllArticles"],
+		queryFn: async () => fetchAllArticles(),
 	});
 };
 
-export { useArticleData };
+export { useAllArticles };
