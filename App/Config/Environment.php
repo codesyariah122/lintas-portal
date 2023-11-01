@@ -7,7 +7,7 @@
 
 namespace App\Config;
 
-use Core\Commons\EnvironmentListCore as EnvListCore;
+use Core\Commons\ConstantsCommons as EnvListCore;
 
 class Environment extends EnvListCore{
 

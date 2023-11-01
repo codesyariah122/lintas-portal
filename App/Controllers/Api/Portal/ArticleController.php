@@ -50,12 +50,10 @@ class ArticleController extends ControllerCore {
 
 	public function create()
 	{
-		$data = @$_REQUEST;
+		$data = self::cleanInput(@$_REQUEST);
 		$cover = @$_FILES['cover'];
 
 		$userDataLogin = UserModel::getUserByRoles($_SESSION['roles'])['id'];
-
-
 
 		$validationRules = [
 			'title' => ['text' => 'text', 'minLength' => 5],

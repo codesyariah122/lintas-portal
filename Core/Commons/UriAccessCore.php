@@ -4,39 +4,19 @@ namespace Core\Commons;
 class UriAccessCore {
 	public static function routePattern()
 	{
-		return [
-			'owner' => [
-				'/api/access/add-role',
-				'/api/access/add-owner',
-				'/api/access/roles',
+		$routes = ConstantsCommons::$routes;
+		foreach (array_keys($routes) as $role) {
+			$routes[$role] = array_merge($routes[$role], [
 				'/api/access/user-data',
 				'/api/access/logout'
-			],
-			'authors' => [
-				'/api/access/add-article',
-				'/api/access/user-data',
-				'/api/access/logout'
-			],
-			'users'=> [
-				'/api/access/user-data',
-				'/api/access/logout'
-			]
-		];
+			]);
+		}
+
+		return $routes;
 	}
 
 	public static function rules()
 	{
-		return [
-			'prefix' => [
-				['uri' => '/api/access'],
-				['uri' => '/api/auth'],
-				['uri' => '/api/public']
-			],
-			'suffix' => [
-				['uri' => '/roles'],
-				['uri' => '/add-role'],
-				['uri' => '/add-owner']
-			],
-		];
+		return ConstantsCommons::$rules;
 	}
 }
