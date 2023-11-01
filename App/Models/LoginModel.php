@@ -81,7 +81,7 @@ class LoginModel extends ModelCore {
 			$stmt->bindParam(':created_at', $data['created_at']);
 
 			if ($stmt->execute()) {
-				$sql = "SELECT l.access_token, u.*, r.name AS role_name 
+				$sql = "SELECT l.access_token, u.id, u.email, u.name, u.role_id, r.name AS role_name
 				FROM " . self::getTableName('logins') . " AS l
 				LEFT JOIN " . self::getTableName('users') . " AS u ON l.user_id = u.id
 				LEFT JOIN " . self::getTableName('roles') . " AS r ON u.role_id = r.id

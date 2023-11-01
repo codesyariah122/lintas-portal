@@ -50,7 +50,7 @@ class ArticleController extends ControllerCore {
 
 	public function create()
 	{
-		$data = self::cleanInput(@$_REQUEST);
+		$data = $this->cleanInput(@$_REQUEST);
 		$cover = @$_FILES['cover'];
 
 		$userDataLogin = UserModel::getUserByRoles($_SESSION['roles'])['id'];

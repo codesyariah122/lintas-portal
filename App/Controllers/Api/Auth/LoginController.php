@@ -38,7 +38,7 @@ class LoginController extends ControllerCore {
 
 	public function create()
 	{
-		$data = self::cleanInput(@$_REQUEST);
+		$data = $this->cleanInput(@$_REQUEST);
 		$email = $data['email'];
 		$password = $data['password'];
 
