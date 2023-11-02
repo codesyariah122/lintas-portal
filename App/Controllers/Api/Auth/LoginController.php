@@ -58,11 +58,13 @@ class LoginController extends ControllerCore {
 			return;
 		}
 
+		$user = UserModel::getUserByEmail($email);
+
 		if (UserModel::isUserExists($email)) {
 			$hashedPassword = UserModel::getHashedPassword($email);
 
 			if (password_verify($password, $hashedPassword)) {
-				$user = UserModel::getUserByEmail($email);
+				
 
 				$userIsLoggedIn = LoginModel::isUserLoggedIn($user['id']);
 
@@ -88,6 +90,20 @@ class LoginController extends ControllerCore {
 					$response = ApiResources::fromResponseToResult($insertResult);
 					$this->jsonResponse($response);
 				} else {
+					$userReadyLogin = LoginModel::findById($user['id']);
+
+					$currentDateTime = new \DateTime();
+					$expirationDateTime = new \DateTime($userReadyLogin['data']['exp_time']);
+
+					if ($currentDateTime > $expirationDateTime) {
+						$logout = LoginModel::delete($userReadyLogin['data']['access_token']);
+
+						if($logout['success']) {
+							$response = ApiResources::createErrorResponse('Login again', ['message' => 'Please try again login !!']);
+						} else {
+							throw new \Exception('Failed process !!!', 401);
+						}
+					}
 					$response = ApiResources::createErrorResponse('Login failed', ['message' => 'User is already logged in']);
 					$this->jsonResponse($response);
 					return;
@@ -103,8 +119,6 @@ class LoginController extends ControllerCore {
 			return;
 		}
 	}
-
-
 
 	public function update(){}
 

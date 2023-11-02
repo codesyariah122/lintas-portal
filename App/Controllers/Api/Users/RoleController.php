@@ -18,7 +18,7 @@ class RoleController extends ControllerCore {
 
 	public function create()
 	{
-		$data = @$_REQUEST;
+		$data = $this->cleanInput(@$_REQUEST);
 
 		if (RoleModel::isRoleExists($data['name'])) {
 			$response = ApiResources::createErrorResponse('Role with the same name already exists.');
