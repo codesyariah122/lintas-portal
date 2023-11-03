@@ -45,6 +45,49 @@ abstract class ModelCore implements ModelInterface {
         return $data;
     }
 
+    public static function countAllItems($table) {
+        self::init();
+        $tableName = self::getTableName($table);
+        $query = 'SELECT COUNT(*) as count FROM ' . $tableName;
+        $stmt = self::$db->query($query);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result['count'];
+        } else {
+            return 0;
+        }
+    }
+
+    public static function search($title, $page, $perPage, $table) {
+        self::init();
+        $tableName = self::getTableName($table);
+        $offset = ($page - 1) * $perPage;
+        $titleParam = '%' . $title . '%';
+        $query = 'SELECT * FROM ' . $tableName . ' WHERE title LIKE :title ORDER BY id DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
+        $stmt = self::$db->prepare($query);
+        $stmt->bindParam(':title', $titleParam, \PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    public static function countSearchResults($title, $table) {
+        self::init();
+        $tableName = self::getTableName($table);
+        $query = 'SELECT COUNT(*) as count FROM ' . $tableName . ' WHERE title LIKE :title';
+        $stmt = self::$db->prepare($query);
+        $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result['count'];
+        } else {
+            return 0;
+        }
+    }
+
 
     // Abstract method untuk mendapatkan nama tabel (setiap model akan mengimplementasikannya sendiri)
     protected static function getTableName($table) {

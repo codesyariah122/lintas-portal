@@ -101,11 +101,11 @@ class LoginController extends ControllerCore {
 						if($logout['success']) {
 							$response = ApiResources::createErrorResponse('Login again', ['message' => 'Please try again login !!']);
 						} else {
-							throw new \Exception('Failed process !!!', 401);
+							$response = ApiResources::createErrorResponse('Login failed', ['message' => 'User is already logged in']);
 						}
+						$this->jsonResponse($response);
 					}
-					$response = ApiResources::createErrorResponse('Login failed', ['message' => 'User is already logged in']);
-					$this->jsonResponse($response);
+					
 					return;
 				}
 			} else {

@@ -17,9 +17,30 @@ class ArticleController extends ControllerCore {
 		try {
 			$page = isset($_GET['page']) ? $_GET['page'] : 1;
 			$perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 10;
+			$searchQuery = isset($_GET['q']) ? $_GET['q'] : '';
 
-			$result = ArticleModel::paginate('articles', $page, $perPage);
-			$this->jsonResponse(['message' => "List of articles!", 'data' => $result]);
+			if (!empty($searchQuery)) {
+				$result = ArticleModel::search($searchQuery, $page, $perPage, 'articles');
+				$totalItems = ArticleModel::countSearchResults($searchQuery, 'articles');
+			} else {
+				$result = ArticleModel::paginate('articles', $page, $perPage);
+				$totalItems = ArticleModel::countAllItems('articles');
+			}
+
+			$paginationMeta = [
+				'total_items' => $totalItems,
+				'total_pages' => ceil($totalItems / $perPage),
+				'current_page' => $page,
+				'per_page' => $perPage,
+			];
+
+			$response = [
+				'message' => "List of articles!",
+				'data' => $result,
+				'meta' => $paginationMeta,
+			];
+
+			$this->jsonResponse($response);
 		} catch (\Exception $e) {
 			$this->jsonResponse(['errors' => $e->getMessage()]);
 		}
