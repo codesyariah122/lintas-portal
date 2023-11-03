@@ -35,6 +35,17 @@ abstract class ModelCore implements ModelInterface {
         return $data;
     }
 
+    public static function paginate($table, $page, $perPage) {
+        self::init();
+        $tableName = self::getTableName($table);
+        $offset = ($page - 1) * $perPage;
+        $query = 'SELECT * FROM ' . $tableName . ' ORDER BY id DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
+        $stmt = self::$db->query($query);
+        $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+
     // Abstract method untuk mendapatkan nama tabel (setiap model akan mengimplementasikannya sendiri)
     protected static function getTableName($table) {
         return $table;

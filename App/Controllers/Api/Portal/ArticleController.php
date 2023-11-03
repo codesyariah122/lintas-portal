@@ -15,10 +15,11 @@ class ArticleController extends ControllerCore {
 
 	public function all(){
 		try {
-			$result = ArticleModel::all('articles');
-			if(count($result) > 0) {
-				$this->jsonResponse(['message' => "List of articles!", 'data' => $result]);
-			}
+			$page = isset($_GET['page']) ? $_GET['page'] : 1;
+			$perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 10;
+
+			$result = ArticleModel::paginate('articles', $page, $perPage);
+			$this->jsonResponse(['message' => "List of articles!", 'data' => $result]);
 		} catch (\Exception $e) {
 			$this->jsonResponse(['errors' => $e->getMessage()]);
 		}
