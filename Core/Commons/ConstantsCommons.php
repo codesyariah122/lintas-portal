@@ -1,8 +1,10 @@
 <?php
+
 namespace Core\Commons;
 
-class ConstantsCommons {
-	protected static $environmentVariables = [
+class ConstantsCommons
+{
+    protected static $environmentVariables = [
         'BASE_URL',
         'PRIVATE_KEY_PATH',
         'API_KEY',
@@ -15,7 +17,8 @@ class ConstantsCommons {
         'GEO_API_URL',
         'GEODATA_API_URL',
         'GEODATA_API_KEY',
-        'GEODATA_SEARCH_API_URL'
+        'GEODATA_SEARCH_API_URL',
+        'ENV_DEV'
     ];
 
     public static $routes = [

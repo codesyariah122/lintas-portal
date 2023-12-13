@@ -1,8 +1,9 @@
-<?php 
+<?php
+
 /**
-* @author : Puji Ermanto <pujiermanto@gmail.com>
-* Polymorphism
-**/
+ * @author : Puji Ermanto <pujiermanto@gmail.com>
+ * Polymorphism
+ **/
 
 namespace Core;
 
@@ -41,5 +42,5 @@ interface RequestApiInterface
 
 interface ViewInterface
 {
-    public static function render($viewName, $data);
+    public static function render($viewName, $layout, $data);
 }

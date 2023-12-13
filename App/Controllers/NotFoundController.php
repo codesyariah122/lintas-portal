@@ -4,24 +4,36 @@ namespace App\Controllers;
 
 use Core\ControllerCore;
 
-class NotFoundController extends ControllerCore {
-	
+class NotFoundController extends ControllerCore
+{
+
     public function __construct()
     {
         $dataResponse = [
             "title" => "Err Page",
-            "message" => "Page Not Found !!"
+            "message" => "Page Not Found !!",
+            "contents" => []
         ];
-        $this->render('errors', $dataResponse);
+        $this->render('errors', 'Layouts/DefaultLayout', $dataResponse);
     }
 
-    public function index(){}
+    public function index()
+    {
+    }
 
-    public function all(){}
+    public function all()
+    {
+    }
 
-    public function create(){}
+    public function create()
+    {
+    }
 
-    public function update(){}
+    public function update()
+    {
+    }
 
-    public function delete(){}
+    public function delete()
+    {
+    }
 }
