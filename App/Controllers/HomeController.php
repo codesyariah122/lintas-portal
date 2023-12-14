@@ -19,13 +19,13 @@ class HomeController extends ControllerCore
 			'carousels' => [
 				[
 					'id' => 1,
-					'img_url' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/11/Thumbnail-Abah-Dakir-1.jpg',
-					'title' => 'Abah Dakir'
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/y8BaIz1FoXV846FfmAfSwJcxWGJBfbPxEakN3wop.png?&w=1000?w=380&fit=crop&auto=format,compress',
+					'title' => 'Sedekah Jariyah Pangan'
 				],
 				[
 					'id' => 2,
-					'img_url' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/11/Thumbnail-v-1.jpg',
-					'title' => 'Darurat! Alirkan Bantuan dan Kebahagiaan untuk Palestina'
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/1YVcdQMxzIYaB5JRSDY8TQ84zuJOspz2YQbFCmHy.png?&w=1000?w=380&fit=crop&auto=format,compress',
+					'title' => 'Jadi Hero Jalur Langit'
 				]
 			],
 			'articles' => [
@@ -60,8 +60,10 @@ class HomeController extends ControllerCore
 					'expired' => '18 hari lagi'
 				]
 			],
-			'contents' => ['Home/Carousel', 'Home/Articles']
+			'partials' => ['Partials/Carousel', 'Partials/Navbar', 'Partials/NavigationBottom'],
+			'contents' => ['Home/Articles']
 		];
+
 		// $this->jsonResponse($dataResponse);
 		$this->render($view, $layout, $dataResponse);
 	}
