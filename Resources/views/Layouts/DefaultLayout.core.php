@@ -28,13 +28,13 @@
             background-color: rgba(255, 118, 0, 0.9);
         }
 
-        #main-navbar {
+        /*#main-navbar {
             transition: #4b535b 0.3s, box-shadow 0.3s;
-        }
+        }*/
 
-        #main-navbar.scrolled {
+        /*#main-navbar.scrolled {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        }*/
 
         .swiper {
             width: 100%;
@@ -135,22 +135,22 @@
             buttons.eq(slide).addClass('active');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            let navbar = document.getElementById('main-navbar');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     let navbar = document.getElementById('main-navbar');
 
-            // Tambahkan event listener untuk mendeteksi perubahan scroll
-            window.addEventListener('scroll', function() {
-                // Tentukan ambang batas scroll untuk mengaktifkan efek
-                let scrollThreshold = 50;
+        //     // Tambahkan event listener untuk mendeteksi perubahan scroll
+        //     window.addEventListener('scroll', function() {
+        //         // Tentukan ambang batas scroll untuk mengaktifkan efek
+        //         let scrollThreshold = 50;
 
-                // Jika scroll lebih dari ambang batas, tambahkan kelas 'scrolled'
-                if (window.scrollY > scrollThreshold) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-        });
+        //         // Jika scroll lebih dari ambang batas, tambahkan kelas 'scrolled'
+        //         if (window.scrollY > scrollThreshold) {
+        //             navbar.classList.add('scrolled');
+        //         } else {
+        //             navbar.classList.remove('scrolled');
+        //         }
+        //     });
+        // });
     </script>
 
 </body>

@@ -1,7 +1,7 @@
  <!-- Card Panel -->
- <div class="grid grid-cols-1 lg:-mt-8 sm:-mt-4 -mt-8 top-96 z-50 shadow-lg absolute bottom-0 lg:left-36 left-1/3 lg:ml-11 ml-3 transform -translate-x-1/2">
+ <div class="grid grid-cols-1 lg:-mt-8 sm:-mt-4 -mt-8 top-96 z-50 shadow-lg absolute bottom-0  lg:left-46 xl:left-48 left-24 lg:ml-16 xl:ml-6 ml-10 transform -translate-x-1/2">
      <div class="col-span-full">
-         <div class="lg:w-screen md:w-96 w-80 max-w-sm lg:h-24 h-20 lg:p-6 p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="z-index: 60;">
+         <div class="lg:w-full xl:w-80 md:w-full lg:h-24 xl:h-20 h-16 lg:p-6 xl:p-4 p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="z-index: 60;">
              <div class="flex justify-between space-x-3">
                  <div>
                      <div class="flex justify-start space-x-2">
@@ -11,7 +11,7 @@
                          <div>
                              <div class="grid grid-cols-1">
                                  <div class="col-span-full">
-                                     <span class="text-gray-600 text-xs">Saldo Inisiatif Kebaikan</span>
+                                     <span class="text-gray-600 text-xs">Inisiatif Kebaikan</span>
                                  </div>
                              </div>
                              <div class="grid grid-cols-1">

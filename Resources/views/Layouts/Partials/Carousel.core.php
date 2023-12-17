@@ -1,5 +1,5 @@
 <!-- Carousel -->
-<div class="relative lg:w-full w-screen lg:left-0 -left-4 lg:-mt-2 -mt-5 z-40" data-carousel="static">
+<div class="relative lg:w-full w-screen lg:left-0 -left-4 lg:-mt-2 xl:-mt-20 md:-mt-5 z-40" data-carousel="static">
     <!-- Carousel wrapper -->
     <div class="relative overflow-hidden rounded-lg h-96 sm:h-80 shadow-md ">
         <?php foreach ($carousels as $carousel) : ?>
@@ -11,7 +11,7 @@
         <?php endforeach; ?>
     </div>
     <!-- Slider indicators -->
-    <div id="carousel-indicators" class="absolute z-50 flex -translate-x-1/2 bottom-2 left-1/2 space-x-3 rtl:space-x-reverse">
+    <div id="carousel-indicators" class="absolute z-50 flex -translate-x-1/2 bottom-10 left-1/2 space-x-3 rtl:space-x-reverse">
         <?php foreach ($carousels as $idx => $carousel) : ?>
             <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide <?= $idx + 1 ?>" data-carousel-slide-to="<?= $idx ?>" onclick="activeSlide(<?= $idx ?>)"></button>
         <?php endforeach; ?>

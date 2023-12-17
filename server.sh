@@ -1,2 +1,3 @@
+#!/bin/bash
 port=4041
-php -S localhost:$port
+C:/xampp/php/php.exe -S localhost:$port

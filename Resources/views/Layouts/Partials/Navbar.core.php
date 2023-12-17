@@ -1,6 +1,6 @@
 <!-- Navbar -->
-<nav id="main-navbar" class="bg-white dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-    <div class="max-w-screen-sm flex flex-wrap items-center justify-between mx-auto p-4">
+<nav id="main-navbar" class="relative lg:w-full w-screen lg:left-0 -left-4 lg:-mt-2 xl:-mt-20 md:-mt-5 z-40">
+    <div class="max-w-screen-sm container mx-auto flex items-center justify-between p-4">
         <a href="http://inisiatifkebaikan.org" class="flex items-center space-x-2 rtl:space-x-reverse">
             <img src="/public/assets/images/logos/base-logo.png" class="w-24" alt="Flowbite Logo" />
         </a>
@@ -14,6 +14,9 @@
         </div>
     </div>
 </nav>
+<!-- End of navbar -->
+
+
 <script>
     const input = document.querySelector('#navbar-search-input');
     const placeholderTexts = ["Cari program kebaikan ...", "Sedekah kebaikan ..."];

@@ -60,7 +60,7 @@ class HomeController extends ControllerCore
 					'expired' => '18 hari lagi'
 				]
 			],
-			'partials' => ['Partials/Carousel', 'Partials/Navbar', 'Partials/NavigationBottom'],
+			'partials' => ['Partials/Navbar', 'Partials/Carousel', 'Partials/NavigationBottom'],
 			'contents' => ['Home/Articles']
 		];
 
