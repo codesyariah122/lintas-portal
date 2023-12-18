@@ -1,12 +1,12 @@
-<div class="swiper mySwiper mt-6">
-    <div class="swiper-wrapper space-x-4">
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
         <?php foreach ($articles as $article) : ?>
-            <div class="swiper-slide">
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class=" swiper-slide gap-2">
+                <div class="w-full  lg:-ml-6 sm:-ml-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-w-sm">
                     <a href="#">
                         <img class="rounded-t-lg" src="<?= $article['img'] ?>" alt="" />
                     </a>
-                    <div class="p-5">
+                    <div class="p-5 text-justify">
                         <a href="#">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $article['title'] ?></h5>
                         </a>
@@ -30,9 +30,14 @@
 
 <script>
     var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 2,
         scrollbar: {
             el: ".swiper-scrollbar",
             hide: false,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
     });
 </script>

@@ -59,52 +59,56 @@
 
         /* Tambahkan ini pada bagian CSS Anda */
         #navbar-search-input {
-            width: 200px !important;
+            width: 300px !important;
             /* Sesuaikan lebar input sesuai kebutuhan */
             border: none;
             border-radius: 8px;
-            padding: 8px 28px 8px 12px;
+            padding: 8px 2px 8px 12px;
             /* Sesuaikan padding sesuai kebutuhan */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             /* Tambahkan box shadow di bagian bawah */
-            margin-left: -10rem;
+            margin-left: .2rem;
+            text-indent: 25px;
+            font-size: 12px;
         }
 
-        /* Efek typing */
-        @keyframes typing {
-            from {
-                width: 0;
+        /* Responsive styles for smaller devices */
+        @media only screen and (max-width: 767px) {
+            #navbar-search-input {
+                width: 210px !important;
+                /* Sesuaikan lebar input sesuai kebutuhan */
+                border: none;
+                border-radius: 8px;
+                padding: 8px 28px 8px 12px;
+                /* Sesuaikan padding sesuai kebutuhan */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                /* Tambahkan box shadow di bagian bawah */
+                margin-left: .5rem;
+                text-indent: 13px;
+                font-size: 12px;
             }
-
-            to {
-                width: 100%;
-            }
         }
 
-        #navbar-search-input::placeholder {
-            opacity: 20%;
+        .mySwiper::-webkit-scrollbar {
+            width: 12px;
         }
 
-        #navbar-search-input.typing::placeholder {
-            opacity: 1;
-            animation: typing 2s steps(15, end) infinite alternate;
+        .mySwiper::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
         }
 
-        /* Gaya untuk ikon */
-        #navbar-search-input+span {
-            position: absolute;
-            top: 50%;
-            left: 8px;
-            transform: translateY(-50%);
-            font-size: 1.25rem;
-            /* Sesuaikan ukuran ikon sesuai kebutuhan */
-            color: #FF7600;
-            /* Sesuaikan warna ikon sesuai kebutuhan */
+        .mySwiper::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 6px;
+        }
+
+        .mySwiper::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
         }
     </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-white">
     <!-- Container -->
     <main class="container px-0 mx-auto lg:p-0 p-0 max-w-screen-sm">
         <section id="layout-wrapper" class="p-4 rounded max-w-lg mx-auto">
@@ -114,7 +118,7 @@
         </section>
 
         <!-- Contents -->
-        <section id="content-wrapper" class="p-4 rounded max-w-md mx-auto mb-24 lg:mt-16 mt-12" style='background-color: rgba(255, 118, 0, 0.1); background-image: url(""); background-size: 100%;'>
+        <section id="content-wrapper" class="p-4 rounded-lg max-w-lg mx-auto mb-24 lg:-mt-2 sm:mt-8" style='background-color: rgba(255, 118, 0, 0.1); background-image: url(""); background-size: 100%;'>
             <?php echo $contents; ?>
         </section>
     </main>
