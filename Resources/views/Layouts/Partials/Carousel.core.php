@@ -1,5 +1,5 @@
 <!-- Carousel -->
-<div class="relative lg:max-w-lg w-screen lg:-left-4 -left-4 lg:-mt-2 xl:-mt-16 md:-mt-5 -mt-28 z-40" data-carousel="static">
+<div class="relative lg:max-w-lg w-screen lg:-left-4 -left-4 lg:mt-2 xl:-mt-16 md:-mt-5 -mt-28 z-40" data-carousel="static">
     <!-- Carousel wrapper -->
     <div class="relative overflow-hidden rounded-lg h-96 sm:h-80 shadow-md">
         <?php foreach ($carousels as $carousel) : ?>

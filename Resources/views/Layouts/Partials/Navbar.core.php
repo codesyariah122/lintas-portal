@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav id="main-navbar" class="relative lg:w-full sm:w-80 top-0 bottom-0 w-screen lg:left-0 -left-4 lg:-mt-2 xl:-mt-6 md:-mt-5 -mt-4 z-50 bg-white">
+<nav id="main-navbar" class="relative  lg:w-full sm:w-80 top-0 bottom-0 w-screen lg:left-0 -left-4 lg:-mt-2 xl:-mt-6 md:-mt-5 -mt-4 z-50 bg-white">
     <div class="max-w-screen-sm container mx-auto flex items-center justify-between p-4">
         <a href="http://inisiatifkebaikan.org" class="flex items-center space-x-2 rtl:space-x-reverse">
             <img src="/public/assets/images/logos/base-logo.png" class="w-24" alt="Flowbite Logo" />
