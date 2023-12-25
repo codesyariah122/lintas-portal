@@ -13,19 +13,29 @@ class HomeController extends ControllerCore
 		$layout = 'Layouts/DefaultLayout';
 		$view = 'home';
 		$dataResponse = [
-			"title" => ucfirst("inisiatif kebaikan"),
+			"title" => ucfirst("inisiatifkebaikan.org - #WadahInisiatifKebaikan"),
 			'message' => 'Lintas Portal Website !!',
 			'env' => $env,
 			'carousels' => [
 				[
 					'id' => 1,
-					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/y8BaIz1FoXV846FfmAfSwJcxWGJBfbPxEakN3wop.png?&w=1000?w=380&fit=crop&auto=format,compress',
-					'title' => 'Sedekah Jariyah Pangan'
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/odn387ywpHmHR97CbdIQYAaSXC1FXyJSivtKxdV0.png?&w=1000?w=534&fit=crop&auto=format,compress',
+					'title' => 'Bergerak wujudkan niat baik'
 				],
 				[
 					'id' => 2,
-					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/1YVcdQMxzIYaB5JRSDY8TQ84zuJOspz2YQbFCmHy.png?&w=1000?w=380&fit=crop&auto=format,compress',
-					'title' => 'Jadi Hero Jalur Langit'
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/TwG7c4kf1nLJadwyYtBcPLCWWy69A1eegIoWeooG.png?&w=1000?w=534&fit=crop&auto=format,compress',
+					'title' => 'Pahala jariyah'
+				],
+				[
+					'id' => 3,
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/BpyRlibnaA7zz1oWGK8AqPFydGzyZrJAIz7UMegX.png?&w=1000?w=534&fit=crop&auto=format,compress',
+					'title' => 'Wakaf sumur'
+				],
+				[
+					'id' => 4,
+					'img_url' => 'https://amalsholeh-s3.imgix.net/user-media/cklzBxsQxV2aJ7RDcfHTgnWPMnf8UDSkV40VsSQY.png?&w=1000?w=534&fit=crop&auto=format,compress',
+					'title' => 'Bangun kembali masjid alikhlas'
 				]
 			],
 			'articles' => [

@@ -1,55 +1,123 @@
-<div class="swiper mySwiper">
+<div class="px-4 mb-6 ">
+    <div>
+        <h2 class="text-gray-900 font-bold mb-1">Solidaritas Kemanusiaan</h2>
+        <p class="text-gray-600 text-sm">Bantu saudara kita di Palestina</p>
+    </div>
+</div>
+
+<div class="relative hidden md:block">
+    <div class="relative w-full flex snap-x gap-4 overflow-x-auto">
+        <div class="shrink-0 first:pl-4 last:pr-4">
+            <div class="w-full flex space-x-4 h-full">
+                <?php foreach ($articles as $article) : ?>
+                    <div class="relative flex transition-shadow duration-150 w-full h-full overflow-hidden  flex-col border mb-2 rounded-xl pb-0 shadow-sm hover:shadow-md bg-white">
+                        <div class="lg:w-80 sm:w-60 lg:-ml-2 sm:-ml-2  bg-white border border-gray-200 rounded-lg shadow-md mx-w-sm">
+                            <a href="#">
+                                <img class="rounded-t-lg" src="<?= $article['img'] ?>" alt="" />
+                            </a>
+                            <div class="p-5 text-left">
+                                <a href="#">
+                                    <h5 class="mb-2 lg:text-lg text-sm font-bold tracking-tight text-gray-900"><?= $article['title'] ?></h5>
+                                </a>
+                                <div class="mt-auto">
+                                    <div class="bg-gray-200 w-full h-1 mb-2 rounded overflow-hidden ">
+                                        <div class="h-1 max-w-full bg-orange-500" style="width: 93%;"></div>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <div class="text-xs font-semibold whitespace-no-wrap">
+                                                Rp 1.391.146.527
+                                            </div>
+                                            <div class="text-xs text-gray-600">
+                                                Donasi Terkumpul
+                                            </div>
+                                        </div>
+                                        <div class="text-right text-gray-600">
+                                            <div class="text-xs">
+                                                <div class="font-semibold">5</div>
+                                                <div class="">
+                                                    Hari Lagi
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .swiper-scrollbar {
+        height: 12px !important;
+        opacity: 1;
+    }
+
+    /* Styling untuk scrollbar saat dihover */
+    .swiper-scrollbar:hover {
+        opacity: 1;
+    }
+</style>
+
+<div class="swiper mySwiper lg:hidden xl:hidden md:hidden sm:block">
     <div class="swiper-wrapper">
         <?php foreach ($articles as $article) : ?>
             <div class="swiper-slide">
-                <div class="lg:w-80 sm:w-60 lg:-ml-2 sm:-ml-2  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-w-sm">
+                <div class="w-60 -ml-2 bg-white border border-gray-200 rounded-lg shadow-md">
                     <a href="#">
                         <img class="rounded-t-lg" src="<?= $article['img'] ?>" alt="" />
                     </a>
                     <div class="p-5 text-left">
                         <a href="#">
-                            <h5 class="mb-2 lg:text-lg text-sm font-bold tracking-tight text-gray-900 dark:text-white"><?= $article['title'] ?></h5>
+                            <h5 class="mb-2 lg:text-lg text-sm font-bold tracking-tight text-gray-900"><?= $article['title'] ?></h5>
                         </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Read more
-                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                            </svg>
-                        </a>
+                        <div class="mt-auto">
+                            <div class="bg-gray-200 w-full h-1 mb-2 rounded overflow-hidden ">
+                                <div class="h-1 max-w-full bg-orange-500" style="width: 93%;"></div>
+                            </div>
+                            <div class="flex justify-between">
+                                <div>
+                                    <div class="text-xs font-semibold whitespace-no-wrap">
+                                        Rp 1.391.146.527
+                                    </div>
+                                    <div class="text-xs text-gray-600">
+                                        Donasi Terkumpul
+                                    </div>
+                                </div>
+                                <div class="text-right text-gray-600">
+                                    <div class="text-xs">
+                                        <div class="font-semibold">5</div>
+                                        <div class="">
+                                            Hari Lagi
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
+
     <div class="swiper-scrollbar"></div>
+
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
-
-        breakpoints: {
-            // When window width is <= 767px (mobile)
-            767: {
-                spaceBetween: 60,
-            },
-            992: {
-                spaceBetween: 80,
-            },
-            1024: {
-                spaceBetween: -125,
+    document.addEventListener('DOMContentLoaded', function () {
+        var articleSwiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: -100,
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: false,
             }
-            // Add more breakpoints as needed
-        },
-        scrollbar: {
-            el: ".swiper-scrollbar",
-            hide: false,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+        });
     });
 </script>
