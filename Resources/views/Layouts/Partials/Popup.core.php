@@ -1,6 +1,6 @@
 <div id="popup-modal" tabindex="-1">
     <div class="modal-content flex p-0 w-full max-w-md max-h-full">
-        <div class="absolute z-60 lg:-left-2 top-20 inset-0 px-0 m-0 sm:mx-auto w-[380px]">
+        <div class="absolute z-60 -left-1 top-20 inset-0 px-0 m-0 sm:mx-auto w-[380px]">
             <div class="max-w-[380px] px-0">
                 <div class="relative">
                     <button onclick="closeModal()" data-modal-hide="popup-modal" data-modal-target="popup-modal" type="button" class="w-10 h-10 rounded-full bg-white flex items-center justify-center absolute right-0 top-0">

@@ -9,7 +9,8 @@ use Core\ServiceContainer;
 
 class WebModel extends ModelCore
 {
-	public static function all($name) {
+	public static function all($name)
+	{
 		return parent::all($name);
 	}
 
@@ -40,8 +41,7 @@ class WebModel extends ModelCore
 			];
 
 			return ['success' => true, 'data' => $carousels];
-
-		} catch (\Throw $th) {
+		} catch (\Throwable $th) {
 			throw new  Exception("Error Processing Request", 1);
 		}
 	}
@@ -55,45 +55,94 @@ class WebModel extends ModelCore
 					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/11/Thumbnail.jpg',
 					'title' => 'Darurat! Alirkan Bantuan dan Kebahagiaan untuk Palestina. Satu Tindakan, Banyak Harapan!',
 					'brand' => ucfirst('gerak menebar kebaikan'),
-					'total_donation' => intval('26.103.953'),
-					'terkumpul_dari' => intval('115.000.000'),
+					'total_donation' => '26.103.953',
+					'terkumpul_dari' => '115.000.000',
 					'donasi' => 253,
-					'expired' => '2 bulan, 16 hari lagi'
+					'expired' => '60 Hari'
 				],
 				[
 					'id' => 2,
 					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/12/Thumbnail-Kembar-Siam.png',
 					'title' => 'Mengancam! Kembar Siam Rawan Komplikasi ',
 					'brand' => ucfirst('inisiatif kebaikan'),
-					'total_donation' => intval('206.307'),
-					'terkumpul_dari' => intval('54.000.000'),
+					'total_donation' => '206.307',
+					'terkumpul_dari' => '54.000.000',
 					'donasi' => 11,
-					'expired' => '4 bulan, 17 hari lagi'
+					'expired' => '40 Hari'
 				],
 				[
 					'id' => 3,
 					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/11/Thumbnail-Abah-Dakir-1.jpg',
 					'title' => 'Tolong! Abah Dakir Gendong Tumor 32 Tahun di Wajah',
 					'brand' => ucfirst('inisiatif kebaikan'),
-					'total_donation' => intval('140.566'),
-					'terkumpul_dari' => intval('58.000.000'),
+					'total_donation' => '140.566',
+					'terkumpul_dari' => '58.000.000',
 					'donasi' => 3,
-					'expired' => '18 hari lagi'
+					'expired' => '18 Hari'
 				]
 			];
 
 			return ['success' => true, 'data' => $articles];
-
-		} catch (\Throw $th) {
+		} catch (\Throwable $th) {
 			throw new  Exception("Error Processing Request", 1);
 		}
 	}
 
-	public static function findById($id){}
+	public static function jariyahs()
+	{
+		try {
+			$articles = [
+				[
+					'id' => 1,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Sedekah-Air.png',
+					'title' => 'Sedekah Jariyah Tak Terputus Alirkan Air untuk Pondok dan Masjid',
+					'brand' => ucfirst('gerak menebar kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '45.000.000',
+					'donasi' => 0,
+					'expired' => '35 Hari'
+				],
+				[
+					'id' => 2,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Sedekah-Quran.png',
+					'title' => 'Sedekah Jariyah Tebar 100RIBU Quran Hingga Pelosok',
+					'brand' => ucfirst('inisiatif kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '25.000.000',
+					'donasi' => 0,
+					'expired' => '18 Hari'
+				],
+				[
+					'id' => 3,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Abahs.png',
+					'title' => 'Istrinya Meninggal karna Tumor, Anaknya mengalami Kebutaan dan ODGJ.',
+					'brand' => ucfirst('inisiatif kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '25.000.000',
+					'donasi' => 0,
+					'expired' => '21 Hari'
+				]
+			];
 
-	public static function create($data){}
+			return ['success' => true, 'data' => $articles];
+		} catch (\Throwable $th) {
+			throw new  Exception("Error Processing Request", 1);
+		}
+	}
 
-	public static function update($id, $data){}
-	
-	public static function delete($id){}
+	public static function findById($id)
+	{
+	}
+
+	public static function create($data)
+	{
+	}
+
+	public static function update($id, $data)
+	{
+	}
+
+	public static function delete($id)
+	{
+	}
 }

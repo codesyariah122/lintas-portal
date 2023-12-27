@@ -17,32 +17,32 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src=" https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js "></script>
 
-    </head>
+</head>
 
-    <body class="bg-white">
-        <!-- Container -->
-        <main class="container px-0 mx-auto lg:p-0 p-0 max-w-screen-md">
+<body class="bg-white">
+    <!-- Container -->
+    <main class="container px-0 mx-auto lg:p-0 p-0 max-w-screen-md">
 
-            <?php foreach($startup as $start):?>
-                <?php require_once "Resources/views/Layouts/". $start . ".core.php";?>
-            <?php endforeach;?>
+        <?php foreach ($startup as $start) : ?>
+            <?php require_once "Resources/views/Layouts/" . $start . ".core.php"; ?>
+        <?php endforeach; ?>
 
-            <section id="layout-wrapper" class="rounded max-w-lg mx-auto">
-                <?php foreach ($partials as $partial) : ?>
-                    <?php require_once "Resources/views/Layouts/" . $partial . ".core.php" ?>
-                <?php endforeach; ?>
-            </section>
+        <section id="layout-wrapper" class="rounded max-w-lg mx-auto">
+            <?php foreach ($partials as $partial) : ?>
+                <?php require_once "Resources/views/Layouts/" . $partial . ".core.php" ?>
+            <?php endforeach; ?>
+        </section>
 
-            <!-- Contents -->
-            <section id="content-wrapper" class="p-4 rounded-lg max-w-lg overflow-auto mx-auto mb-24 lg:-mt-2 sm:mt-8">
-                <?php echo $contents; ?>
-            </section>
-        </main>
+        <!-- Contents -->
+        <section id="content-wrapper" class="p-4 rounded-lg max-w-lg overflow-auto mx-auto mb-6 lg:-mt-2 sm:mt-8">
+            <?php echo $contents; ?>
+        </section>
+    </main>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-        <script type="text/javascript" src="/public/assets/js/public/app.js"></script>
-        <script type="text/javascript" src="/public/assets/js/public/load.js"></script>
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script type="text/javascript" src="/public/assets/js/public/app.js"></script>
+    <script type="text/javascript" src="/public/assets/js/public/load.js"></script>
+</body>
 
-    </html>
+</html>

@@ -19,9 +19,10 @@ class HomeController extends ControllerCore
 			'env' => $env,
 			'carousels' => WebModel::carousels()['data'],
 			'articles' => WebModel::articles()['data'],
+			'jariyahs' => WebModel::jariyahs()['data'],
 			'startup' => ['Partials/Popup'],
 			'partials' => ['Partials/Navbar', 'Partials/Carousel', 'Partials/NavigationBottom'],
-			'contents' => ['Home/Articles']
+			'contents' => ['Home/Articles', 'Home/ProgramFidyah', 'Home/ProgramSedekah', 'Home/TerbaruInisiatifOrg', 'Home/FooterContent']
 		];
 
 		// $this->jsonResponse($dataResponse);

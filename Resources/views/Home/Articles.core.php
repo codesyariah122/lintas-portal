@@ -1,6 +1,6 @@
-<div class="article__wrapper">
+<div class="article__wrapper px-4 py-6">
 
-    <div class="px-4 mb-6 ">
+    <div class="mb-6">
         <div>
             <h2 class="text-gray-900 font-bold mb-1">Solidaritas Kemanusiaan</h2>
             <p class="text-gray-600 text-sm">Bantu saudara kita di Palestina</p>
@@ -11,7 +11,7 @@
     <div class="relative hidden md:block">
         <div class="relative w-full flex snap-x gap-4 overflow-x-auto">
             <div class="shrink-0 first:pl-4 last:pr-4">
-                <div class="w-full flex space-x-4 h-full">
+                <div class="w-full flex space-x-4">
                     <?php foreach ($articles as $article) : ?>
                         <div class="relative flex transition-shadow duration-150 w-full h-full overflow-hidden  flex-col border mb-2 rounded-xl pb-0 shadow-sm hover:shadow-md bg-white">
                             <div class="lg:w-80 sm:w-60 lg:-ml-2 sm:-ml-2  bg-white border border-gray-200 rounded-lg shadow-md mx-w-sm">
@@ -28,19 +28,16 @@
                                         </div>
                                         <div class="flex justify-between">
                                             <div>
-                                                <div class="text-xs font-semibold whitespace-no-wrap">
-                                                    Rp 1.391.146.527
+                                                <div class="text-sm font-semibold whitespace-no-wrap">
+                                                    Rp <?= $article['total_donation'] ?>
                                                 </div>
                                                 <div class="text-xs text-gray-600">
-                                                    Donasi Terkumpul
+                                                    Donasi Terkumpul dari <span>Rp. <?= $article['terkumpul_dari'] ?></span>
                                                 </div>
                                             </div>
                                             <div class="text-right text-gray-600">
                                                 <div class="text-xs">
-                                                    <div class="font-semibold">5</div>
-                                                    <div class="">
-                                                        Hari Lagi
-                                                    </div>
+                                                    <div class="font-semibold"><?= $article['expired'] ?></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -56,10 +53,10 @@
 
     <!-- Untuk Mobile -->
     <div class="swiper mySwiper lg:hidden xl:hidden md:hidden sm:block">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper flex space-x-10">
             <?php foreach ($articles as $article) : ?>
                 <div class="swiper-slide">
-                    <div class="w-60 -ml-2 bg-white border border-gray-200 rounded-lg shadow-md">
+                    <div class="w-60 bg-white border border-gray-200 rounded-lg shadow-md">
                         <a href="#">
                             <img class="rounded-t-lg" src="<?= $article['img'] ?>" alt="" />
                         </a>
@@ -73,19 +70,16 @@
                                 </div>
                                 <div class="flex justify-between">
                                     <div>
-                                        <div class="text-xs font-semibold whitespace-no-wrap">
-                                            Rp 1.391.146.527
+                                        <div class="text-sm font-semibold whitespace-no-wrap">
+                                            Rp <?= $article['total_donation'] ?>
                                         </div>
                                         <div class="text-xs text-gray-600">
-                                            Donasi Terkumpul
+                                            Donasi Terkumpul dari <span>Rp. <?= $article['terkumpul_dari'] ?></span>
                                         </div>
                                     </div>
                                     <div class="text-right text-gray-600">
                                         <div class="text-xs">
-                                            <div class="font-semibold">5</div>
-                                            <div class="">
-                                                Hari Lagi
-                                            </div>
+                                            <div class="font-semibold"><?= $article['expired'] ?> Lagi</div>
                                         </div>
                                     </div>
                                 </div>

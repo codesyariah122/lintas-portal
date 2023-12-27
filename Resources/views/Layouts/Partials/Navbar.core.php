@@ -7,14 +7,13 @@
     }
 
     @media (orientation: landscape) {
-        #main-navbar {
-        }
+        #main-navbar {}
     }
 </style>
 
 <nav id="main-navbar" class="relative lg:w-full sm:w-80 top-6 bottom-0 w-screen lg:left-0 -left-4 lg:mt-2 xl:-mt-6 md:-mt-5 -mt-8 z-50 bg-transparent">
     <div class="flex items-center justify-center py-4">
-        <a href="http://inisiatifkebaikan.org" class="lg:-ml-2 ml-4">
+        <a href="http://inisiatifkebaikan.org" class="lg:-ml-2 ml-5">
             <img src="/public/assets/images/logos/base-logo.png" class="w-24" alt="Flowbite Logo" />
         </a>
         <div class="flex md:order-2 items-center relative mt-2">
