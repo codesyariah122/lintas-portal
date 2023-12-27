@@ -1,5 +1,5 @@
 <!-- Swiper -->
-<div class="relative lg:max-w-lg w-screen lg:-left-4 -left-4 lg:mt-2 xl:-mt-20 md:-mt-5 -mt-[5.2rem] z-40">
+<div class="relative lg:max-w-lg w-full lg:mt-2 xl:-mt-20 md:-mt-5 -mt-[4.2rem] z-1">
     <div class="swiper-carousel swiper-container overflow-hidden">
         <div class="swiper-wrapper">
             <?php foreach ($carousels as $carousel) : ?>
@@ -15,16 +15,3 @@
 
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        let swiperCarousel = new Swiper('.swiper-carousel', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-    });
-</script>

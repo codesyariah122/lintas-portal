@@ -1,5 +1,5 @@
 <!-- Navigation bottom-->
-<div class="fixed bottom-0 left-0 z-40 bg-white w-full h-16 border-t-0 shadow-md">
+<div class="fixed bottom-0 left-0 z-50 bg-white w-full h-16 border-t-0 shadow-md">
     <div class="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
         <button type="button" class="inline-flex flex-col items-center justify-center px-2 hover:bg-gray-50 dark:hover:bg-gray-800 group text-gray-500">
             <i data-feather="home"></i>

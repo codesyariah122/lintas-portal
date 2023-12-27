@@ -43,13 +43,13 @@ CREATE TABLE users (
     coordinates VARCHAR(255) DEFAULT NULL,
     displayLocation TEXT DEFAULT NULL,
     address TEXT DEFAULT NULL,
-    articles_id VARCHAR(255) DEFAULT NULL,
+    campaigns_id VARCHAR(255) DEFAULT NULL,
     subscribers VARCHAR(255) DEFAULT NULL,
     created_at DATETIME,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
-CREATE TABLE articles (
+CREATE TABLE campaigns (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     cover VARCHAR(255) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE comments (
     content TEXT NOT NULL,
     posted_at DATETIME NOT NULL,
     user_id INT DEFAULT NULL,
-    FOREIGN KEY (article_id) REFERENCES articles(id),
+    FOREIGN KEY (article_id) REFERENCES campaigns(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

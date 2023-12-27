@@ -1,4 +1,4 @@
-<div class="p-4 pt-0 -mt-8 relative z-50">
+<div class="p-4 pt-0 -mt-8 relative z-30">
     <div class="flex items-center rounded-xl bg-white py-3 px-4 shadow-lg">
         <div class="w-2/3"><a class="flex cursor-pointer pr-3" href="/wallet">
                 <div class="flex items-center justify-center mr-3 mt-1"><svg width="30" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 92">
