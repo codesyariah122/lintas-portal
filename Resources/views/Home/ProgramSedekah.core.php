@@ -1,5 +1,5 @@
-<div class="program__sedekah-wrapper py-6">
-    <div class="px-4 mb-6 ">
+<div class="program__sedekah-wrapper w-screen">
+    <div class="px-4 mb-6 py-6">
         <div>
             <h2 class="text-gray-900 font-bold mb-1">Sedekah Al-Quran Yuk</h2>
             <p class="text-gray-600 text-sm">Raih pahala jariyah dari setiap huruf yang dibaca</p>

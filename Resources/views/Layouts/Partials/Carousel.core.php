@@ -1,5 +1,5 @@
 <!-- Swiper -->
-<div class="relative lg:max-w-lg w-full lg:mt-2 xl:-mt-20 md:-mt-5 -mt-[4.2rem] z-1">
+<div class="relative carousel-hero lg:max-w-lg w-full xl:-mt-20 lg:-mt-20  md:-mt-5 -mt-[4.2rem] z-1">
     <div class="swiper-carousel swiper-container overflow-hidden">
         <div class="swiper-wrapper">
             <?php foreach ($carousels as $carousel) : ?>

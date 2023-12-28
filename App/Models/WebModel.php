@@ -130,6 +130,48 @@ class WebModel extends ModelCore
 		}
 	}
 
+	public static function metas()
+	{
+		try {
+			$metas = [
+				[
+					'id' => 1,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Sedekah-Air.png',
+					'title' => 'Sedekah Jariyah Tak Terputus Alirkan Air untuk Pondok dan Masjid',
+					'brand' => ucfirst('gerak menebar kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '45.000.000',
+					'donasi' => 0,
+					'expired' => '35 Hari'
+				],
+				[
+					'id' => 2,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Sedekah-Quran.png',
+					'title' => 'Sedekah Jariyah Tebar 100RIBU Quran Hingga Pelosok',
+					'brand' => ucfirst('inisiatif kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '25.000.000',
+					'donasi' => 0,
+					'expired' => '18 Hari'
+				],
+				[
+					'id' => 3,
+					'img' => 'https://wahdahinisiatifkebaikan.org/wp-content/uploads/2023/10/Abahs.png',
+					'title' => 'Istrinya Meninggal karna Tumor, Anaknya mengalami Kebutaan dan ODGJ.',
+					'brand' => ucfirst('inisiatif kebaikan'),
+					'total_donation' => '0',
+					'terkumpul_dari' => '25.000.000',
+					'donasi' => 0,
+					'expired' => '21 Hari'
+				]
+			];
+
+			return ['success' => true, 'data' => $metas];
+		} catch (\Throwable) {
+			throw new  Exception("Error Processing Request", 1);
+		}
+	}
+
 	public static function findById($id)
 	{
 	}

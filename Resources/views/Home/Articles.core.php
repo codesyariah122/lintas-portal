@@ -1,4 +1,4 @@
-<div class="article__wrapper px-4 py-6">
+<div class="article__wrapper px-4 py-6 w-screen">
 
     <div class="mb-6">
         <div>
@@ -53,10 +53,10 @@
 
     <!-- Untuk Mobile -->
     <div class="swiper mySwiper lg:hidden xl:hidden md:hidden sm:block">
-        <div class="swiper-wrapper flex space-x-10">
+        <div class="swiper-wrapper flex space-x-20">
             <?php foreach ($articles as $article) : ?>
                 <div class="swiper-slide">
-                    <div class="w-60 bg-white border border-gray-200 rounded-lg shadow-md">
+                    <div class="w-62 bg-white border border-gray-200 rounded-lg shadow-md">
                         <a href="#">
                             <img class="rounded-t-lg" src="<?= $article['img'] ?>" alt="" />
                         </a>
